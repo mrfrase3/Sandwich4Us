@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var config = require('./config.json');
+var exphbs  = require('express-handlebars');
 var express = require('express');
 var app = express();
 var server;
@@ -38,13 +39,15 @@ if(config.server.https.enabled){
 }
 io = require('socket.io')(server);
 
-// Setup express modules/settings
+// Setup express modules/settings/renderer
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use("/common", express.static( __dirname + "/common" ));
 
 // Express routing
 
 app.get('/', function (req, res) {
-	var path = __dirname + "/resources/index.html";
-	res.sendFile(path);
+    var fill = {isPageIndex: true};
+	res.render('index');
 });

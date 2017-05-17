@@ -33,7 +33,7 @@ FE = Front End, BE = Back End, FS = Full Stack
  - [ ] FE implement pure css
  - [ ] FE implement jquery
  - [ ] FE add sweat alert
- - [ ] BE add handlebars
+ - [x] BE add handlebars
  - [ ] BE add load in for mongo
  - [ ] FS add socket.io
  - [ ] BE add Travis CI for unit testing
