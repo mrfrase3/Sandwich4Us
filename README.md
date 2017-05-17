@@ -29,7 +29,7 @@ session.secret          |`onlytellyourcat`| Large secret string for sessions
 FE = Front End, BE = Back End, FS = Full Stack
 
  - [x] BE add config file
- - [ ] BE add https
+ - [x] BE add https
  - [ ] FE implement pure css
  - [ ] FE implement jquery
  - [ ] FE add sweat alert
