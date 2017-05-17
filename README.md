@@ -1,24 +1,34 @@
 # Sandwich4Us
 sandwich matching website for CITS3403
 
-Check it out at (https://sandwich4.us)[https://sandwich4.us]
+Check it out at https://sandwich4.us
 
 # Installation
-1. `Git Gud`
+1. `git gud`
 
 # Configuration
 
 The folowing values can be changed in the `config.json` file.
 
-|----|----|----|
-|Value|Default|description|
-|----|----|----|
 
+Value|Default|Description
+-----|-------|-----------
+server.http.enabled     |`true`| whether to run a http server, if https is also true, it will just reditect http connections to the https server. This is ignored and assumed true if https is false.
+server.http.port        |`3000`| port to run the http webserver on.
+server.https.enabled    |`true`| whether to run a https server.
+server.https.port       |`3001`| port to run the https webserver on.
+server.https.cert       | `./certs/cert.pem`| file location of the ssl certificate.
+server.https.key        | `./certs/key.pem`| file location of the ssl key.
+database.mongo.host     |`ds141401.mlab.com`| hostname of the mongodb server
+database.mongo.port     |`41401`| port of the mongo server
+database.mongo.name     |`sandwich`| name of the mongo database database.mongo.user     |`public`| username of the mongo server user
+database.mongo.password |`password`| password of the mongo server user
+session.secret          |`onlytellyourcat`| Large secret string for sessions
 
 # Roadmap
 FE = Front End, BE = Back End, FS = Full Stack
 
- - [ ] BE add config file
+ - [x] BE add config file
  - [ ] BE add https
  - [ ] FE implement pure css
  - [ ] FE implement jquery
@@ -32,6 +42,7 @@ FE = Front End, BE = Back End, FS = Full Stack
    - [ ] FE make registration form
    - [ ] FE make login form
    - [ ] BE implement mongo user database
+   - [ ] BE implement sessions with mongo session store
    - [ ] FS add socket login calls / socket auth
 
  - [ ] FS implement match requests

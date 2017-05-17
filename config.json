@@ -1,0 +1,26 @@
+{
+    "server": {
+        "http": {
+            "enabled": true,
+            "port": 3000
+        },
+        "https": {
+            "enabled": false,
+            "port": 3001,
+            "cert": "./certs/cert.pem",
+            "key" : "./certs/key.pem"
+        }
+    },
+    "database": {
+        "mongo": {
+            "host": "ds141401.mlab.com",
+            "port": 41401,
+            "name": "sandwich",
+            "user": "public",
+            "password": "password"
+        }
+    },
+    "session": {
+        "secret": "onlytellyourcat"
+    }
+}
