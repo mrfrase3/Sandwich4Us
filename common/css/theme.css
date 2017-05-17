@@ -1,0 +1,301 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Nunito', sans-serif;
+	background: #fdfdfd;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Patrick Hand', cursive;
+    margin: 0;
+}
+
+
+
+.navbar {
+    max-height: 100%;
+	min-height: 3em;
+    background: #5481e6;
+	color: white;
+	box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	-webkit-transition: all .35s;
+    -o-transition: all .35s;
+	transition: all .35s;
+}
+
+.navbar .nav-content {
+	max-height: 0;
+	overflow-y: hidden;
+}
+
+.navbar .nav-logo img {
+	height: 100%;
+	margin-left: 0.5em;
+}
+
+.navbar .nav-logo h1 {
+	font-size: 2em;
+	display: inline-block;
+    vertical-align: top;
+}
+
+.navbar .nav-content,
+.navbar .nav-logo {
+	min-width: 100%;
+	float: left;
+	display: inline-block;
+	background: #5481e6;
+}
+
+.navbar .nav-logo {
+	height: 3em;
+}
+
+.navbar .nav-content button {
+	min-width: 100%;
+	height: 3em;
+    background: #5481e6;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    line-height: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.navbar .nav-content button.active,
+.navbar .nav-content button:hover {
+	background: #5c89ef;
+}
+
+.navbar .nav-content button:focus {
+	outline: none;
+}
+
+.navbar .nav-content button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+.navbar #nav-menu-toggle {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+.navbar label[for="nav-menu-toggle"] {
+	position: absolute;
+	display: block;
+	float: right;
+	height: 3em;
+	width: 3em;
+	cursor: pointer;
+	right: 0;
+    text-align: center;
+    line-height: 3em;
+}
+
+.navbar label[for="nav-menu-toggle"] i {
+	line-height: inherit;
+}
+
+.navbar #nav-menu-toggle:checked ~ .nav-content {
+  max-height: 100%;
+}
+
+.content {
+	position: relative;
+    min-height: 100%;
+}
+
+.content .tile {
+	display: none;
+	background: white;
+	width: 95%;
+	margin-left: 2.5%;
+	min-height: 3em;
+	margin-bottom: 1em;
+	box-shadow: 0 2px 5px 1px rgba(0,0,0,0.2);
+
+	position: relative;
+}
+
+.content .tile.active {
+	display: block;
+}
+
+.content .tile > div {
+	padding: 0.5em;
+}
+
+.content .tile .tile-body {
+	padding: 1em;
+}
+
+.content .tile .tile-header{
+	min-height: 1em;
+    background: #5481e6;
+	color: white;
+}
+
+.content .tile .tile-footer{
+	min-height: 1em;
+    background: #5c89ef;
+}
+
+.content .tile .tile-body h1, 
+.content .tile .tile-body h2, 
+.content .tile .tile-body h3, 
+.content .tile .tile-body h4, 
+.content .tile .tile-body h5, 
+.content .tile .tile-body h6 {
+    border-bottom: lightgray 1px solid;
+    min-width: 33.33%;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.content .buffer {
+	height: 5em;
+}
+
+.footer {
+	background: #5c89ef;
+	max-width: 100%;
+	min-height: 5em;
+	box-shadow: 0 -1px 5px 1px rgba(0,0,0,0.2);
+
+	position: relative;
+	bottom: 5em;
+}
+
+.footer .footer-sect {
+	width: 30%;
+	min-height: 5em;
+	display: inline-block;
+	padding-left: 0.5em;
+	vertical-align: top;
+
+	border-left: white 1px solid;
+	margin-left: -2px;
+}
+
+.footer .footer-sect:first-child {
+	border-left: none;
+	margin-left: 0;
+}
+
+.footer .footer-sect p {
+    margin: 0;
+    font-size: 0.75em;
+}
+
+.footer .title {
+	font-size: 1.5em;
+	display: inline-block;
+    vertical-align: top;
+}
+
+.btn {
+	height: 2.5em;
+    min-width: 5em;
+    font-size: 1em;
+    border: none;
+    background: #5481e6;
+    color: white;
+    cursor: pointer;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+	transition: all .35s;
+}
+
+.btn:hover {
+    background: #5c89ef;
+    color: black;
+}
+
+.theme-form fieldset {
+    margin: 1.5em 0;
+	border: none;
+    padding-left: 2em;
+    padding-top: 2.2em;
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    min-width: 51%;
+}
+
+.theme-form fieldset legend {
+    border-bottom: lightgray 1px solid;
+    min-width: 66.66%;
+    left: 0.5em;
+    position: absolute;
+    top: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.theme-form .input-cluster {
+	min-width: 80%;
+	min-height: 2.5em;
+}
+
+.theme-form .input-cluster input{
+	float: right;
+	min-width: 50%;
+	min-height: 2em;
+    font-family: 'Nunito', sans-serif;
+    border: grey 1px solid;
+    padding: 0 0.5em;
+}
+
+.theme-form .input-cluster label{
+    min-width: 20%;
+    display: inline-block;
+    margin-right: 2%;
+}
+
+@media only screen  and (min-width : 1224px) {
+	.navbar, .content, .footer {
+    	padding-left: 25%;
+    	padding-right: 25%;
+	}
+
+	.navbar {
+    	height: 3em;
+    }
+
+	.navbar .nav-content {
+  		max-height: 100%;
+	}
+
+	.navbar label[for="nav-menu-toggle"],
+	.navbar #nav-menu-toggle {
+		display: none;
+	}
+
+	.navbar .nav-content,
+	.navbar .nav-content button,
+	.navbar .nav-logo {
+		min-width: 0;
+	}
+
+	.navbar .nav-content button:first-child {
+		margin-left: 2em;
+	}
+
+	.theme-form {
+    	min-width: 50%;
+	}
+
+}
