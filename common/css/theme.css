@@ -16,8 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar {
-    max-height: 100%;
-	min-height: 3em;
+    min-height: 4em;
 	color: white;
 	/*box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);*/
 	position: fixed;
@@ -30,10 +29,6 @@ h1, h2, h3, h4, h5, h6 {
 	user-select: none;
 }
 
-.navbar .pure-menu-heading {
-    font-family: 'Patrick Hand', cursive;
-}
-
 .navbar .pure-menu-horizontal {
 	height: 0;
 	text-align: center;
@@ -41,65 +36,28 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: all .35s;
     transition: all .35s;
     background: #f8f8f8;
-    box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);
+    box-shadow: 0;
+    padding: 0;
+    overflow-y: hidden;
+    white-space: normal;
 }
 
-.navbar .nav-logo {
+.navbar .pure-menu-horizontal .pure-menu-list {
+    margin-right: 4em;
+}
+
+.navbar .pure-menu-heading {
+    font-family: 'Patrick Hand', cursive;
+    font-weight: bold;
     padding-left: 3em;
     position: relative;
 }
 
-.navbar .nav-logo img {
+.navbar .pure-menu-heading img {
 	height: 2em;
     position: absolute;
     left: 0.5em;
 }
-
-/*.navbar .nav-logo h1 {
-	font-size: 2em;
-	display: inline-block;
-    vertical-align: top;
-}
-
-.navbar .nav-content,
-.navbar .nav-logo {
-	min-width: 100%;
-	float: left;
-	display: inline-block;
-	background: #5481e6;
-}
-
-.navbar .nav-logo {
-	height: 3em;
-}
-
-.navbar .nav-content button {
-	min-width: 100%;
-	height: 3em;
-    background: #5481e6;
-    border: 0;
-    color: inherit;
-    cursor: pointer;
-    font: inherit;
-    line-height: normal;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-.navbar .nav-content button.active,
-.navbar .nav-content button:hover {
-	background: #5c89ef;
-}
-
-.navbar .nav-content button:focus {
-	outline: none;
-}
-
-.navbar .nav-content button::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-}*/
 
 .navbar #nav-menu-toggle {
 	position: absolute;
@@ -108,14 +66,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar label[for="nav-menu-toggle"] {
+    z-index: 1;
 	position: absolute;
 	display: block;
-	height: 3em;
-	width: 3em;
+	height: 4em;
+	width: 4em;
 	cursor: pointer;
 	left: 0;
     text-align: center;
-    line-height: 3em;
+    line-height: 4em;
     background-color: rgba(0,0,0,0.7);
 }
 
@@ -128,8 +87,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar #nav-menu-toggle:checked ~ .pure-menu-horizontal {
-    height: 100%;
+    min-height: 3em;
+    height: auto;
     padding-left: 3em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);
 }
 
 .navbar #nav-menu-toggle:checked ~ label[for="nav-menu-toggle"] i.open {
@@ -142,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .content {
 	position: relative;
-    min-height: 100%;
+    min-height: 4em;
 }
 
 .content .tile {
@@ -299,11 +262,13 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	.navbar {
-    	height: 3em;
+    	min-height: 3em;
     }
 
 	.navbar .pure-menu-horizontal {
   		height: 100%;
+  		padding: 0.5em 0;
+  		box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);
 	}
 
 	.navbar label[for="nav-menu-toggle"],
