@@ -31,8 +31,8 @@ FE = Front End, BE = Back End, FS = Full Stack
 
  - [x] BE add config file
  - [x] BE add https
- - [ ] FE implement pure css
- - [ ] FE implement jquery
+ - [-] FE implement pure css
+ - [x] FE implement jquery
  - [ ] FE add sweat alert
  - [x] BE add handlebars
  - [ ] BE add load in for mongo
@@ -40,8 +40,8 @@ FE = Front End, BE = Back End, FS = Full Stack
  - [ ] BE add Travis CI for unit testing
 
  - [ ] FS implement login/users
-   - [ ] FE make registration form
-   - [ ] FE make login form
+   - [x] FE make registration form
+   - [x] FE make login form
    - [ ] BE implement mongo user database
    - [ ] BE implement sessions with mongo session store
    - [ ] FS add socket login calls / socket auth
