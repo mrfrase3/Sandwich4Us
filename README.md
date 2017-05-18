@@ -26,6 +26,7 @@ database.mongo.password |`password`| password of the mongo server user
 session.secret          |`onlytellyourcat`| Large secret string for sessions
 
 # Roadmap
+This can be tracked on the [trello board](https://trello.com/b/lY581frK).
 FE = Front End, BE = Back End, FS = Full Stack
 
  - [x] BE add config file
