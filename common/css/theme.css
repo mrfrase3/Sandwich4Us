@@ -114,7 +114,8 @@ html, button, input, select, textarea,
 }
 
 .content > div,
-.content > section {
+.content > section
+.footer > div {
     margin-left: auto;
     margin-right: auto;
 }
@@ -181,9 +182,7 @@ html, button, input, select, textarea,
 }
 
 .footer .footer-sect {
-	width: 30%;
 	min-height: 5em;
-	display: inline-block;
 	padding-left: 0.5em;
 	vertical-align: top;
 

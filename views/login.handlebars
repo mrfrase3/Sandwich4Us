@@ -1,0 +1,32 @@
+<div class="pure-u-1 pure-u-md-1-2 pure-g">
+    <section class="pure-u-1 pure-u-lg-3-4 pure-u-xl-1-2 tile register">
+        <div class="tile-header">
+            <h2>Log into Your Account</h2>
+        </div>
+        <div class="tile-body">
+            <form class="pure-form pure-form-stacked" action="/login" method="POST">
+                <fieldset>
+                    <legend>Enter Your Details to Login</legend>
+                    
+                    <span class="pure-form-message">
+                        Don't have an account? <a href="/">Register!</a>
+                        <br>
+                        {{formMessage}}
+                    </span>
+                    
+                    
+                    <label for="login_email">Your Email:</label>
+                    <input id="login_email" name="login_email" type="email" required 
+                    maxlength="128" placeholder="jane.smith@exmaple.com" 
+                    value="{{login_email}}" class="pure-input-3-4"/>
+                    
+                    <label for="login_password">Password:</label>
+                    <input id="login_password" name="login_password" type="password" required 
+                    maxlength="256" placeholder="Password" class="pure-input-3-4">
+                    
+                    <button type="submit" class="pure-button pure-button-primary">Login</button>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+</div>

@@ -51,5 +51,10 @@ app.get('/', function (req, res) {
 	res.render('register', fill);
 });
 
+app.get('/login', function (req, res) {
+    var fill = {isPageLogin: true};
+    res.render('login', fill);
+});
+
 server.listen(port);
 console.log("Server started on port: " + port);
