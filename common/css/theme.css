@@ -8,6 +8,10 @@ body {
 	background: #fdfdfd;
 	padding-top: 5em;
 	background-image: url("/common/img/background1.jpeg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 html, button, input, select, textarea,
@@ -109,6 +113,12 @@ html, button, input, select, textarea,
     text-align: center;
 }
 
+.content > div,
+.content > section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .content .tile {
 	display: inline-block;
 	background: white;
@@ -154,6 +164,10 @@ html, button, input, select, textarea,
 
 .content .buffer {
 	height: 5em;
+}
+
+.content > .pure-g{
+    text-align: left;
 }
 
 .footer {
@@ -255,15 +269,10 @@ html, button, input, select, textarea,
     margin-right: 2%;
 }
 
-@media (min-width: 62em) {
-	.content, .footer {
-    	padding-left: 25%;
-    	padding-right: 25%;
-	}
-	
-	.content{
-	    text-align: left;
-	}
+@media (min-width: 64em) {
+    body {
+        padding-top: 10em;
+    }
 
 	.navbar {
     	min-height: 3em;
