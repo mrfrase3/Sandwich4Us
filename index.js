@@ -48,8 +48,8 @@ app.use("/common", express.static( __dirname + "/common" ));
 
 app.get('/', function (req, res) {
     var fill = {isPageIndex: true};
-	res.render('index', fill);
+	res.render('register', fill);
 });
 
-server.listen(port)
+server.listen(port);
 console.log("Server started on port: " + port);
