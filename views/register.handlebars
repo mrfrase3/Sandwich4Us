@@ -1,19 +1,40 @@
 <section class="tile home active">
     <div class="tile-header">
-        <h2>Find A Sandwich Buddy!</h2>
+        <h2>Register to Find Your Sandwich Buddies!</h2>
     </div>
     <div class="tile-body">
-        <form class="sand-form theme-form" action="#">
+        <form class="pure-form pure-form-stacked" action="/register" method="POST">
             <fieldset>
                 <legend>Enter Your Details</legend>
-                <div class="input-cluster">
-                    <label for="sand-name">Your Name:</label>
-                    <input id="sand-name" name="sand-name" type="text" required maxlength="128" pattern="[a-zA-Z -]+"/>
-                </div>
-                <div class="input-cluster">
-                    <label for="sand-name">Your Email:</label>
-                    <input id="sand-email" name="sand-email" type="email" required maxlength="128"/>
-                </div>
+                {{#if formMessage}}
+                    <span class="pure-form-message">{{formMessage}}</span>
+                {{/if}}
+                
+                <label for="reg-firstname">Your First Name:</label>
+                <input id="reg_firstname" name="reg_firstname" type="text" required 
+                maxlength="128" pattern="[a-zA-Z][a-zA-Z -]*" placeholder="Jane" value="{{reg_name}}"/>
+                
+                <label for="reg-lastname">Your Last Name:</label>
+                <input id="reg_lastname" name="reg_lastname" type="text" required 
+                maxlength="128" pattern="[a-zA-Z][a-zA-Z -]*" placeholder="Smith" value="{{reg_name}}"/>
+                
+                <label for="reg-name">Your Email:</label>
+                <input id="reg_email" name="reg_email" type="email" required 
+                maxlength="128" placeholder="jane.smith@exmaple.com" value="{{reg_email}}"/>
+                
+                <label for="password">Password:</label>
+                <input id="reg_password" name="reg_password" type="reg_password" required 
+                maxlength="256" placeholder="ThisIsA100%StrongPassword">
+                
+                <label for="password">Confirm Password:</label>
+                <input id="reg_password2" name="reg_password2" type="reg_password2" required 
+                maxlength="256" placeholder="ThisIsA100%StrongPassword">
+                
+                <label for="reg_IAgree" class="pure-checkbox">
+                    <input id="reg_IAgree" required value="agree" type="checkbox"> I agree to sell my soul in order to get a sandwich
+                </label>
+                
+                <button type="submit" class="pure-button pure-button-primary">Register</button>
             </fieldset>
         </form>
     </div>
