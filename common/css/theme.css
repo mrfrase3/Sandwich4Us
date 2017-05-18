@@ -7,6 +7,7 @@ body {
 	margin: 0;
 	font-family: 'Nunito', sans-serif;
 	background: #fdfdfd;
+	padding-top: 5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,6 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 	-webkit-transition: all .35s;
     -o-transition: all .35s;
 	transition: all .35s;
+	user-select: none;
 }
 
 .navbar .pure-menu-heading {
@@ -33,13 +35,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .pure-menu-horizontal {
-	max-height: 0;
-	overflow-y: hidden;
+	height: 0;
+	text-align: center;
+	-webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+    background: #f8f8f8;
+    box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);
+}
+
+.navbar .nav-logo {
+    padding-left: 3em;
+    position: relative;
 }
 
 .navbar .nav-logo img {
-	height: 100%;
-	/*margin-left: 0.5em;*/
+	height: 2em;
+    position: absolute;
+    left: 0.5em;
 }
 
 /*.navbar .nav-logo h1 {
@@ -115,7 +128,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar #nav-menu-toggle:checked ~ .pure-menu-horizontal {
-    max-height: 100%;
+    height: 100%;
+    padding-left: 3em;
 }
 
 .navbar #nav-menu-toggle:checked ~ label[for="nav-menu-toggle"] i.open {
@@ -279,7 +293,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 62em) {
-	.navbar, .content, .footer {
+	.content, .footer {
     	padding-left: 25%;
     	padding-right: 25%;
 	}
@@ -288,8 +302,8 @@ h1, h2, h3, h4, h5, h6 {
     	height: 3em;
     }
 
-	.navbar .nav-content {
-  		max-height: 100%;
+	.navbar .pure-menu-horizontal {
+  		height: 100%;
 	}
 
 	.navbar label[for="nav-menu-toggle"],
@@ -297,7 +311,7 @@ h1, h2, h3, h4, h5, h6 {
 		display: none;
 	}
 
-	.navbar .nav-content,
+	/*.navbar .nav-content,
 	.navbar .nav-content button,
 	.navbar .nav-logo {
 		min-width: 0;
@@ -305,7 +319,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	.navbar .nav-content button:first-child {
 		margin-left: 2em;
-	}
+	}*/
 
 	.theme-form {
     	min-width: 50%;
