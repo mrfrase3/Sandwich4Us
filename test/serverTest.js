@@ -35,8 +35,8 @@ describe("Server-runTest", function(){
             assert.notEqual(body.indexOf("<body>"), -1, "the main layout was not rendered");
             assert.notEqual(body.indexOf("./common/css/theme.css"), -1, "the css partial was not rendered");
             assert.notEqual(body.indexOf("./common/js/main.js"), -1, "the js partial was not rendered");
-            assert.notEqual(body.indexOf("class=\"navbar\""), -1, "the navbar partial was not rendered");
-            assert.notEqual(body.indexOf("class=\"footer\""), -1, "the footer partial was not rendered");
+            assert.notEqual(body.indexOf("class=\"navbar"), -1, "the navbar partial was not rendered");
+            assert.notEqual(body.indexOf("class=\"footer"), -1, "the footer partial was not rendered");
             
             assert.notEqual(body.indexOf("tile register"), -1, "the register view was not rendered");
             
@@ -53,8 +53,8 @@ describe("Server-runTest", function(){
             assert.notEqual(body.indexOf("<body>"), -1, "the main layout was not rendered");
             assert.notEqual(body.indexOf("./common/css/theme.css"), -1, "the css partial was not rendered");
             assert.notEqual(body.indexOf("./common/js/main.js"), -1, "the js partial was not rendered");
-            assert.notEqual(body.indexOf("class=\"navbar\""), -1, "the navbar partial was not rendered");
-            assert.notEqual(body.indexOf("class=\"footer\""), -1, "the footer partial was not rendered");
+            assert.notEqual(body.indexOf("class=\"navbar"), -1, "the navbar partial was not rendered");
+            assert.notEqual(body.indexOf("class=\"footer"), -1, "the footer partial was not rendered");
             
             assert.notEqual(body.indexOf("tile login"), -1, "the register view was not rendered");
             
