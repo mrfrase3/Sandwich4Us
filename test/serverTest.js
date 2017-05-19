@@ -6,11 +6,13 @@ var port;
 var proto = "http://";
 
 var config = require("../config.json");
-config.database.mongo.host = "127.0.0.1";
-config.database.mongo.port = 27017;
-config.database.mongo.user = "travis";
-config.database.mongo.password = "test";
-fs.writeFileSync("../config.json", JSON.stringify(config));
+if(process.env.TRAVIS){ //change db to travis's own mongo
+    config.database.mongo.host = "127.0.0.1";
+    config.database.mongo.port = 27017;
+    config.database.mongo.user = "travis";
+    config.database.mongo.password = "test";
+    fs.writeFileSync("../config.json", JSON.stringify(config));
+}
 
 describe("Server-runTest", function(){
     

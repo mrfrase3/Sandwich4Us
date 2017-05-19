@@ -2,8 +2,15 @@ language: node_js
 node_js:
   - node
   - 6
+sudo: false
 services:
 - mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.0-precise
+    packages:
+    - mongodb-org-server
 before_script:
 - sleep 15
 - mongo mydb_test --eval 'db.addUser("travis", "test");'
