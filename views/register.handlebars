@@ -10,12 +10,12 @@
                     <span class="pure-form-message">
                         Already have an account? <a href="/login">Login!</a>
                     </span>
-                    {{#if formMessage}}
+                    {{#each formMessages}}
                         <br>
                         <span class="pure-form-message danger">
-                            {{formMessage}}
+                            {{this}}
                         </span>
-                    {{/if}}
+                    {{/each}}
                     
                     <label for="reg-firstname">Your First Name:</label>
                     <input id="reg_firstname" name="reg_firstname" type="text" required 

@@ -11,12 +11,12 @@
                     <span class="pure-form-message">
                         Don't have an account? <a href="/">Register!</a>
                     </span>
-                    {{#if formMessage}}
+                    {{#each formMessages}}
                         <br>
                         <span class="pure-form-message danger">
-                            {{formMessage}}
+                            {{this}}
                         </span>
-                    {{/if}}
+                    {{/each}}
                     
                     
                     <label for="login_email">Your Email:</label>
