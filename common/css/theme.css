@@ -171,6 +171,10 @@ html, button, input, select, textarea,
     text-align: left;
 }
 
+span.pure-form-message.danger {
+    color: orangered;
+}
+
 .footer {
 	background: tranparent;
 	width: 100%;

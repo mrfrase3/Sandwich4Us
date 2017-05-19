@@ -56,5 +56,15 @@ app.get('/login', function (req, res) {
     res.render('login', fill);
 });
 
-server.listen(port);
-console.log("Server started on port: " + port);
+module.exports.start = ()=>{
+    server.listen(port);
+    console.log("Server started on port: " + port);
+    return port;
+}
+
+module.exports.stop = ()=>{
+    server.close();
+    console.log("Server stopped");
+}
+
+if(!module.parent) module.exports.start();

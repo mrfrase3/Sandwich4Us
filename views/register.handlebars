@@ -9,9 +9,13 @@
                     <legend>Enter Your Details</legend>
                     <span class="pure-form-message">
                         Already have an account? <a href="/login">Login!</a>
-                        <br>
-                        {{formMessage}}
                     </span>
+                    {{#if formMessage}}
+                        <br>
+                        <span class="pure-form-message danger">
+                            {{formMessage}}
+                        </span>
+                    {{/if}}
                     
                     <label for="reg-firstname">Your First Name:</label>
                     <input id="reg_firstname" name="reg_firstname" type="text" required 

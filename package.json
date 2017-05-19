@@ -4,7 +4,8 @@
   "description": "P2P Sandwich Creation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha -w",
+    "start": "node index"
   },
   "repository": {
     "type" : "git",
@@ -16,5 +17,10 @@
     "express": "^4.15.2",
     "socket.io": "^1.7.3",
     "express-handlebars": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.1",
+    "assert": "^1.4.1",
+    "request": "^2.81.0"
   }
 }
