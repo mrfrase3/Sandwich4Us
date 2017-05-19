@@ -124,11 +124,10 @@ html, button, input, select, textarea,
 	display: inline-block;
 	background: white;
 	max-width: 95%;
-	margin-left: 2.5%;
 	min-height: 3em;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 	box-shadow: 0 2px 5px 1px rgba(0,0,0,0.2);
-
+    text-align: left;
 	position: relative;
 }
 
@@ -161,6 +160,8 @@ html, button, input, select, textarea,
     min-width: 33.33%;
     font-weight: bold;
     display: inline-block;
+    padding-left: 1em;
+    margin: 0.5em 0;
 }
 
 .content .buffer {
