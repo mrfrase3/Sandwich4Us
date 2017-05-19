@@ -1,4 +1,5 @@
 # Sandwich4Us
+[![Build Status](https://travis-ci.org/mrfrase3/Sandwich4Us.svg?branch=master)](https://travis-ci.org/mrfrase3/Sandwich4Us)
 sandwich matching website for CITS3403
 
 Check it out at https://sandwich4.us
@@ -31,13 +32,13 @@ FE = Front End, BE = Back End, FS = Full Stack
 
  - [x] BE add config file
  - [x] BE add https
- - [-] FE implement pure css
+ - [ ] FE implement pure css
  - [x] FE implement jquery
  - [ ] FE add sweat alert
  - [x] BE add handlebars
  - [ ] BE add load in for mongo
  - [ ] FS add socket.io
- - [ ] BE add Travis CI for unit testing
+ - [x] BE add Travis CI for unit testing
 
  - [ ] FS implement login/users
    - [x] FE make registration form
