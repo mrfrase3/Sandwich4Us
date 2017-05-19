@@ -4,7 +4,7 @@
   "description": "P2P Sandwich Creation",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha -w",
+    "test": "node_modules/.bin/mocha",
     "start": "node index"
   },
   "repository": {
