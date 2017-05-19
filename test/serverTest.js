@@ -9,8 +9,8 @@ var config = require("../config.json");
 if(process.env.TRAVIS){ //change db to travis's own mongo
     config.database.mongo.host = "127.0.0.1";
     config.database.mongo.port = 27017;
-    config.database.mongo.user = "travis";
-    config.database.mongo.password = "test";
+    config.database.mongo.user = "";
+    config.database.mongo.password = "";
     fs.writeFileSync("../config.json", JSON.stringify(config));
 }
 
