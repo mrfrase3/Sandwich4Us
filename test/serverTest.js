@@ -74,7 +74,7 @@ describe("Server-runTest", function(){
     });
     
     it("returns the references page with all bits", function(done){
-        request.get(proto+"localhost:"+port+"/login", function(err, res, body){
+        request.get(proto+"localhost:"+port+"/references", function(err, res, body){
             assert.ifError(err);
             assert.equal(res.statusCode, 200, "server does not send file for some reason");
             assert.notEqual(body.length, 0, "empty file was given");
@@ -85,7 +85,7 @@ describe("Server-runTest", function(){
             assert.notEqual(body.indexOf("class=\"navbar"), -1, "the navbar partial was not rendered");
             assert.notEqual(body.indexOf("class=\"footer"), -1, "the footer partial was not rendered");
             
-            assert.notEqual(body.indexOf("tile references"), -1, "the register view was not rendered");
+            assert.notEqual(body.indexOf("tile references"), -1, "the ref view was not rendered");
             
             done();
         });
