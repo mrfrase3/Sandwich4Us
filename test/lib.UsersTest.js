@@ -24,32 +24,36 @@ describe("Users-unitTest", function(){
     after(function(){
         mongoose.disconnect();
     });
+    
+    describe("Test General", function(){
        
-    it("can register/login/remove user with valid credentials", function(done){
-        Users.register("Jane", "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
-            assert.ifError(err);
-        }).then((user)=>{
-            assert.equal(user.firstname, "Jane", "First name saved in registration is incorrect");
-            assert.equal(user.lastname, "Smith", "Last name saved in registration is incorrect");
-            assert.equal(user.email, "jane.smith@example.com", "email saved in registration is incorrect");
-            Users.login("jane.smith@example.com", "StrongPassword").catch((err)=>{
+        it("can register/login/remove user with valid credentials", function(done){
+            Users.register("Amy", "Tester", "amy.tester@example.com", "AGoodPassword").catch((err)=>{
                 assert.ifError(err);
             }).then((user)=>{
-                assert.ok(user, "No user returned on 'successful' login");
-                assert.equal(user.email, "jane.smith@example.com", "user returned on login is incorrect");
-                Users.remove(user.id, "StrongPassword").catch((err)=>{
+                assert.equal(user.firstname, "Amy", "First name saved in registration is incorrect");
+                assert.equal(user.lastname, "Tester", "Last name saved in registration is incorrect");
+                assert.equal(user.email, "amy.tester@example.com", "email saved in registration is incorrect");
+                Users.login("amy.tester@example.com", "AGoodPassword").catch((err)=>{
                     assert.ifError(err);
-                }).then(()=>{
-                    User.get("jane.smith@example.com").catch((err)=>{
+                }).then((user)=>{
+                    assert.ok(user, "No user returned on 'successful' login");
+                    assert.equal(user.email, "amy.tester@example.com", "user returned on login is incorrect");
+                    Users.remove(user.id, "AGoodPassword").catch((err)=>{
                         assert.ifError(err);
-                    }).then((user)=>{
-                        assert.equal(!!user, false, "registered user was not removed.");
-                        done();
+                    }).then(()=>{
+                        Users.get("amy.tester@example.com").catch((err)=>{
+                            assert.ifError(err);
+                        }).then((user)=>{
+                            assert.equal(!!user, false, "registered user was not removed.");
+                            done();
+                        });
+                        
                     });
-                    
                 });
             });
         });
+        
     });
     
     describe("Test Register", function(){
