@@ -34,21 +34,25 @@ describe("Users-unitTest", function(){
                 assert.equal(user.firstname, "Amy", "First name saved in registration is incorrect");
                 assert.equal(user.lastname, "Tester", "Last name saved in registration is incorrect");
                 assert.equal(user.email, "amy.tester@example.com", "email saved in registration is incorrect");
-                Users.login("amy.tester@example.com", "AGoodPassword").catch((err)=>{
+                user.validated = true;
+                user.save(function(err){
                     assert.ifError(err);
-                }).then((user)=>{
-                    assert.ok(user, "No user returned on 'successful' login");
-                    assert.equal(user.email, "amy.tester@example.com", "user returned on login is incorrect");
-                    Users.remove(user.id, "AGoodPassword").catch((err)=>{
+                    Users.login("amy.tester@example.com", "AGoodPassword").catch((err)=>{
                         assert.ifError(err);
-                    }).then(()=>{
-                        Users.get("amy.tester@example.com").catch((err)=>{
+                    }).then((user)=>{
+                        assert.ok(user, "No user returned on 'successful' login");
+                        assert.equal(user.email, "amy.tester@example.com", "user returned on login is incorrect");
+                        Users.remove(user.id, "AGoodPassword").catch((err)=>{
                             assert.ifError(err);
-                        }).then((user)=>{
-                            assert.equal(!!user, false, "registered user was not removed.");
-                            done();
+                        }).then(()=>{
+                            Users.get("amy.tester@example.com").catch((err)=>{
+                                assert.ifError(err);
+                            }).then((user)=>{
+                                assert.equal(!!user, false, "registered user was not removed.");
+                                done();
+                            });
+                            
                         });
-                        
                     });
                 });
             });
