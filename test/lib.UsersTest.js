@@ -18,7 +18,7 @@ describe("Users-unitTest", function(){
     
     before(function(){
         mongoose.connect(mongouri);
-        Users = new require('../lib/Users.js')(mongoose);
+        Users = require('../lib/Users.js')(mongoose);
     });
     
     after(function(){
