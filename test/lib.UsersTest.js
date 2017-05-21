@@ -28,12 +28,12 @@ describe("Users-unitTest", function(){
     
     describe("Test General", function(){
         
-        it("can register/login/remove user with valid credentials", function(done){
+        it("can register/login/remove user with valid credentials", function(){
             return new Promise((resolve, reject) => {
                 Users.register("Amy", "Tester", "amy.tester@example.com", "AGoodPassword").then((user)=>{
-                    console.log(user);
-                    assert.equal(user.firstname, "Amy", "First name saved in registration is incorrect");
-                    assert.equal(user.lastname, "Tester", "Last name saved in registration is incorrect");
+                    //console.log(user);
+                    assert.equal(user.firstname, "amy", "First name saved in registration is incorrect");
+                    assert.equal(user.lastname, "tester", "Last name saved in registration is incorrect");
                     assert.equal(user.email, "amy.tester@example.com", "email saved in registration is incorrect");
                     user.validated = true;
                     user.save(function(err){
