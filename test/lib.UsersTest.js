@@ -299,8 +299,20 @@ describe("Users-unitTest", function(){
         after(function(){
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
-    
+        
         it("can throw when removing a user with invalid credentials (id)(no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.remove("123456781234567812345678", "I<3CatsNotDogs").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
+            });
+        });
+    
+        it("can throw when removing a user with invalid credentials (id)(invalid)", function(){
             return new Promise((resolve, reject) => {
                 Users.remove(1234, "I<3CatsNotDogs").catch((err)=>{
                     assert.ok(err);
