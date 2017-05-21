@@ -361,8 +361,7 @@ describe("Users-unitTest", function(){
         });
         
         it("can throw when removing a user with invalid credentials (password)(undefined)", function(){
-            return new Promise((resolve, reject
-            resolve();) => {
+            return new Promise((resolve, reject) => {
                 Users.remove(mike.id, undefined).catch((err)=>{
                     assert.ok(err);
                     console.log(err);
