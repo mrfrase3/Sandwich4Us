@@ -380,7 +380,7 @@ describe("Users-unitTest", function(){
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
     
-        it("can throw when getting a user with invalid credentials (search)(no exist)", function(){
+        it("can throw when getting a user with invalid credentials (search)(email no exist)", function(){
             return new Promise((resolve, reject) => {
                 Users.get("nobody@example.com").catch((err)=>{
                     assert.ok(err);
@@ -392,9 +392,33 @@ describe("Users-unitTest", function(){
             });
         });
         
-        it("can throw when getting a user with invalid credentials (search)(no exist)", function(){
+        it("can throw when getting a user with invalid credentials (search)(invalid)", function(){
+            return new Promise((resolve, reject) => {
+                Users.get("tomato").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when getting a user with invalid credentials (search)(invalid2)", function(){
             return new Promise((resolve, reject) => {
                 Users.get(1234).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when getting a user with invalid credentials (search)(id no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.get("123456781234567812345678").catch((err)=>{
                     assert.ok(err);
                     console.log(err);
                     resolve();
