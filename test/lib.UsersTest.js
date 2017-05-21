@@ -707,7 +707,7 @@ describe("Users-unitTest", function(){
         
         it("wont throw using tokens with invalid inputs (token)(invalid)", function(){
             return new Promise((resolve, reject) => {
-                Users.genToken(mike.id, "sockauth", "potato").then((valid)=>{
+                Users.useToken(mike.id, "sockauth", "potato").then((valid)=>{
                     assert.equal(valid, false, "invalid token was usable?");
                     resolve();
                 }).catch(reject).catch(reject);
@@ -716,7 +716,7 @@ describe("Users-unitTest", function(){
         
         it("wont throw using tokens with invalid inputs (token)(undefined)", function(){
             return new Promise((resolve, reject) => {
-                Users.genToken(mike.id, "sockauth", undefined).then((valid)=>{
+                Users.useToken(mike.id, "sockauth", undefined).then((valid)=>{
                     assert.equal(valid, false, "invalid token was usable?");
                     resolve();
                 }).catch(reject).catch(reject);
