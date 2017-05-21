@@ -646,8 +646,8 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((valid)=>{
-                    assert.equals(valid, true, "Invalid input passed use");
-                    assert.equals(valid, false, "Invalid input passed use (returned invalid instead of catch)");
+                    assert.equal(valid, true, "Invalid input passed use");
+                    assert.equal(valid, false, "Invalid input passed use (returned invalid instead of catch)");
                 }).catch(reject);
             });
         });
@@ -659,8 +659,8 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((valid)=>{
-                    assert.equals(valid, true, "Invalid input passed use");
-                    assert.equals(valid, false, "Invalid input passed use (returned invalid instead of catch)");
+                    assert.equal(valid, true, "Invalid input passed use");
+                    assert.equal(valid, false, "Invalid input passed use (returned invalid instead of catch)");
                 }).catch(reject);
             });
         });
@@ -672,8 +672,8 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((valid)=>{
-                    assert.equals(valid, true, "Invalid input passed use");
-                    assert.equals(valid, false, "Invalid input passed use (returned invalid instead of catch)");
+                    assert.equal(valid, true, "Invalid input passed use");
+                    assert.equal(valid, false, "Invalid input passed use (returned invalid instead of catch)");
                 }).catch(reject);
             });
         });
@@ -681,7 +681,7 @@ describe("Users-unitTest", function(){
         it("wont throw when using tokens with invalid inputs (purpose)(invalid)", function(){
             return new Promise((resolve, reject) => {
                 Users.useToken(mike.id, "invalid", mike_token).then((valid)=>{
-                    assert.equals(valid, false, "invalid purpose was usable?");
+                    assert.equal(valid, false, "invalid purpose was usable?");
                     resolve();
                 }).catch(reject).catch(reject);
             });
@@ -690,7 +690,7 @@ describe("Users-unitTest", function(){
         it("wont throw when using tokens with invalid inputs (purpose)(blank)", function(){
             return new Promise((resolve, reject) => {
                 Users.useToken(mike.id, "", mike_token).then((valid)=>{
-                    assert.equals(valid, false, "invalid purpose was usable?");
+                    assert.equal(valid, false, "invalid purpose was usable?");
                     resolve();
                 }).catch(reject).catch(reject);
             });
@@ -699,7 +699,7 @@ describe("Users-unitTest", function(){
         it("wont throw when using tokens with invalid inputs (purpose)(undefined)", function(){
             return new Promise((resolve, reject) => {
                 Users.useToken(mike.id, undefined, mike_token).then((valid)=>{
-                    assert.equals(valid, false, "invalid purpose was usable?");
+                    assert.equal(valid, false, "invalid purpose was usable?");
                     resolve();
                 }).catch(reject).catch(reject);
             });
@@ -708,7 +708,7 @@ describe("Users-unitTest", function(){
         it("wont throw using tokens with invalid inputs (token)(invalid)", function(){
             return new Promise((resolve, reject) => {
                 Users.genToken(mike.id, "sockauth", "potato").then((valid)=>{
-                    assert.equals(valid, false, "invalid token was usable?");
+                    assert.equal(valid, false, "invalid token was usable?");
                     resolve();
                 }).catch(reject).catch(reject);
             });
@@ -717,7 +717,7 @@ describe("Users-unitTest", function(){
         it("wont throw using tokens with invalid inputs (token)(undefined)", function(){
             return new Promise((resolve, reject) => {
                 Users.genToken(mike.id, "sockauth", undefined).then((valid)=>{
-                    assert.equals(valid, false, "invalid token was usable?");
+                    assert.equal(valid, false, "invalid token was usable?");
                     resolve();
                 }).catch(reject).catch(reject);
             });
