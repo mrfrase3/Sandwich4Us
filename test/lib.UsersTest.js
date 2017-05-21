@@ -58,123 +58,147 @@ describe("Users-unitTest", function(){
     
     describe("Test Register", function(){
     
-        it("can throw when registering user with invalid credentials (firstname)(bad match)", function(done){
-            Users.register("Jane9*$&^$", "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (firstname)(bad match)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane9*$&^$", "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (firstname)(blank)", function(done){
-            Users.register("", "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (firstname)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("", "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (firstname)(undefined)", function(done){
-            Users.register(undefined, "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (firstname)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register(undefined, "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (lastname)(bad match)", function(done){
-            Users.register("Jane", "Smith5~:$($*%@", "jane.smith@example.com", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (lastname)(bad match)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith5~:$($*%@", "jane.smith@example.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (lastname)(blank)", function(done){
-            Users.register("Jane", "", "jane.smith@example.com", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (lastname)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "", "jane.smith@example.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (lastname)(undefined)", function(done){
-            Users.register("Jane", undefined, "jane.smith@example.com", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (lastname)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", undefined, "jane.smith@example.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (email)(bad match)", function(done){
-            Users.register("Jane", "Smith", "jane.smithexample.com", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (email)(bad match)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith", "jane.smithexample.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (email)(blank)", function(done){
-            Users.register("Jane", "Smith", "", "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (email)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith", "", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (email)(undefined)", function(done){
-            Users.register("Jane", "Smith", undefined, "StrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (email)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith", undefined, "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (password)(too short)", function(done){
-            Users.register("Jane", "Smith", "jane.smith@example.com", "weak").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (password)(too short)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith", "jane.smith@example.com", "weak").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (password)(blank)", function(done){
-            Users.register("Jane", "Smith", "jane.smith@example.com", "").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (password)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith", "jane.smith@example.com", "").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
         
-        it("can throw when registering user with invalid credentials (password)(undefined)", function(done){
-            Users.register("Jane", "Smith", "jane.smith@example.com", undefined).catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed validation");
+        it("can throw when registering user with invalid credentials (password)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith", "jane.smith@example.com", undefined).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
             });
         });
     });
@@ -195,53 +219,63 @@ describe("Users-unitTest", function(){
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
     
-        it("can throw when logging in as user with invalid credentials (email)(no exist)", function(done){
-            Users.login("nobody@example.com", "I<3CatsNotDogs").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when logging in as user with invalid credentials (email)(no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.login("nobody@example.com", "I<3CatsNotDogs").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when logging in as user with invalid credentials (email)(undefined)", function(done){
-            Users.login(undefined, "I<3CatsNotDogs").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when logging in as user with invalid credentials (email)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.login(undefined, "I<3CatsNotDogs").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when logging in as user with invalid credentials (password)(wrong)", function(done){
-            Users.login("mike.jones@example.com", "WrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when logging in as user with invalid credentials (password)(wrong)", function(){
+            return new Promise((resolve, reject) => {
+                Users.login("mike.jones@example.com", "WrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when logging in as user with invalid credentials (password)(blank)", function(done){
-            Users.login("mike.jones@example.com", "").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when logging in as user with invalid credentials (password)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.login("mike.jones@example.com", "").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when logging in as user with invalid credentials (password)(undefined)", function(done){
-            Users.login("mike.jones@example.com", undefined).catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when logging in as user with invalid credentials (password)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.login("mike.jones@example.com", undefined).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
@@ -262,53 +296,63 @@ describe("Users-unitTest", function(){
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
     
-        it("can throw when removing a user with invalid credentials (id)(no exist)", function(done){
-            Users.remove(1234, "I<3CatsNotDogs").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when removing a user with invalid credentials (id)(no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.remove(1234, "I<3CatsNotDogs").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when removing a user with invalid credentials (id)(undefined)", function(done){
-            Users.remove(undefined, "I<3CatsNotDogs").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when removing a user with invalid credentials (id)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.remove(undefined, "I<3CatsNotDogs").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when removing a user with invalid credentials (password)(wrong)", function(done){
-            Users.remove(mike.id, "WrongPassword").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when removing a user with invalid credentials (password)(wrong)", function(){
+            return new Promise((resolve, reject) => {
+                Users.remove(mike.id, "WrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when removing a user with invalid credentials (password)(blank)", function(done){
-            Users.remove(mike.id, "").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when removing a user with invalid credentials (password)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.remove(mike.id, "").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when removing a user with invalid credentials (password)(undefined)", function(done){
-            Users.remove(mike.id, undefined).catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when removing a user with invalid credentials (password)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.remove(mike.id, undefined).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
@@ -329,33 +373,39 @@ describe("Users-unitTest", function(){
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
     
-        it("can throw when getting a user with invalid credentials (search)(no exist)", function(done){
-            Users.get("nobody@example.com").catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when getting a user with invalid credentials (search)(no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.get("nobody@example.com").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when getting a user with invalid credentials (search)(no exist)", function(done){
-            Users.get(1234).catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when getting a user with invalid credentials (search)(no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.get(1234).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
-        it("can throw when getting a user with invalid credentials (search)(undefined)", function(done){
-            Users.get(undefined).catch((err)=>{
-                assert.ok(err);
-                console.log(err);
-                done();
-            }).then((user)=>{
-                assert.ifError(user, "Invalid credentials passed login");
+        it("can throw when getting a user with invalid credentials (search)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.get(undefined).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed login");
+                }).catch(reject);
             });
         });
         
