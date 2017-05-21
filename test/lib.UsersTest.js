@@ -307,7 +307,7 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
+                    assert.ifError(user, "Invalid credentials passed remove");
                 }).catch(reject);
             });
         });
@@ -319,7 +319,7 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
+                    assert.ifError(user, "Invalid credentials passed remove");
                 }).catch(reject);
             });
         });
@@ -331,7 +331,7 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
+                    assert.ifError(user, "Invalid credentials passed remove");
                 }).catch(reject);
             });
         });
@@ -343,7 +343,7 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
+                    assert.ifError(user, "Invalid credentials passed remove");
                 }).catch(reject);
             });
         });
@@ -355,7 +355,7 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
+                    assert.ifError(user, "Invalid credentials passed remove");
                 }).catch(reject);
             });
         });
@@ -367,7 +367,7 @@ describe("Users-unitTest", function(){
                     console.log(err);
                     resolve();
                 }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
+                    assert.ifError(user, "Invalid credentials passed remove");
                 }).catch(reject);
             });
         });
@@ -393,61 +393,41 @@ describe("Users-unitTest", function(){
     
         it("can throw when getting a user with invalid credentials (search)(email no exist)", function(){
             return new Promise((resolve, reject) => {
-                Users.get("nobody@example.com").catch((err)=>{
-                    assert.ok(err);
-                    console.log(err);
-                    resolve();
-                }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
-                }).catch(reject);
+                Users.get("nobody@example.com").then((user)=>{
+                    assert.equal(user, null, "get returned a user with an invalid search");
+                }).catch(reject).catch(reject);
             });
         });
         
         it("can throw when getting a user with invalid credentials (search)(invalid)", function(){
             return new Promise((resolve, reject) => {
-                Users.get("tomato").catch((err)=>{
-                    assert.ok(err);
-                    console.log(err);
-                    resolve();
-                }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
-                }).catch(reject);
+                Users.get("tomato").then((user)=>{
+                    assert.equal(user, null, "get returned a user with an invalid search");
+                }).catch(reject).catch(reject);
             });
         });
         
         it("can throw when getting a user with invalid credentials (search)(invalid2)", function(){
             return new Promise((resolve, reject) => {
-                Users.get(1234).catch((err)=>{
-                    assert.ok(err);
-                    console.log(err);
-                    resolve();
-                }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
-                }).catch(reject);
+                Users.get(1234).then((user)=>{
+                    assert.equal(user, null, "get returned a user with an invalid search");
+                }).catch(reject).catch(reject);
             });
         });
         
         it("can throw when getting a user with invalid credentials (search)(id no exist)", function(){
             return new Promise((resolve, reject) => {
-                Users.get("123456781234567812345678").catch((err)=>{
-                    assert.ok(err);
-                    console.log(err);
-                    resolve();
-                }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
-                }).catch(reject);
+                Users.get("123456781234567812345678").then((user)=>{
+                    assert.equal(user, null, "get returned a user with an invalid search");
+                }).catch(reject).catch(reject);
             });
         });
         
         it("can throw when getting a user with invalid credentials (search)(undefined)", function(){
             return new Promise((resolve, reject) => {
-                Users.get(undefined).catch((err)=>{
-                    assert.ok(err);
-                    console.log(err);
-                    resolve();
-                }).then((user)=>{
-                    assert.ifError(user, "Invalid credentials passed login");
-                }).catch(reject);
+                Users.get(undefined).then((user)=>{
+                    assert.equal(user, null, "get returned a user with an invalid search");
+                }).catch(reject).catch(reject);
             });
         });
         
