@@ -218,7 +218,6 @@ describe("Users-unitTest", function(){
         });
         
         after(function(){
-            console.log(mike);
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
     
