@@ -206,16 +206,19 @@ describe("Users-unitTest", function(){
     
     describe("Test Login", function(){
     
-        before(function(done){
-            Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
-            .catch(assert.ifError).then((user)=>{
-                mike = user;
-                user.validated = true;
-                user.save(done);
+        before(function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
+                .catch(reject).then((user)=>{
+                    mike = user;
+                    user.validated = true;
+                    user.save().then(resolve).catch(reject);
+                });
             });
         });
         
         after(function(){
+            console.log(mike);
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
     
@@ -283,12 +286,14 @@ describe("Users-unitTest", function(){
     
     describe("Test Remove", function(){
     
-        before(function(done){
-            Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
-            .catch(assert.ifError).then((user)=>{
-                mike = user;
-                user.validated = true;
-                user.save(done);
+        before(function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
+                .catch(reject).then((user)=>{
+                    mike = user;
+                    user.validated = true;
+                    user.save().then(resolve).catch(reject);
+                });
             });
         });
         
@@ -360,12 +365,14 @@ describe("Users-unitTest", function(){
     
     describe("Test Get", function(){
     
-        before(function(done){
-            Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
-            .catch(assert.ifError).then((user)=>{
-                mike = user;
-                user.validated = true;
-                user.save(done);
+        before(function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
+                .catch(reject).then((user)=>{
+                    mike = user;
+                    user.validated = true;
+                    user.save().then(resolve).catch(reject);
+                });
             });
         });
         
