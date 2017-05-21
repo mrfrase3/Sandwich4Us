@@ -31,6 +31,7 @@ describe("Users-unitTest", function(){
         it("can register/login/remove user with valid credentials", function(done){
             return new Promise((resolve, reject) => {
                 Users.register("Amy", "Tester", "amy.tester@example.com", "AGoodPassword").then((user)=>{
+                    console.log(user);
                     assert.equal(user.firstname, "Amy", "First name saved in registration is incorrect");
                     assert.equal(user.lastname, "Tester", "Last name saved in registration is incorrect");
                     assert.equal(user.email, "amy.tester@example.com", "email saved in registration is incorrect");
