@@ -361,7 +361,8 @@ describe("Users-unitTest", function(){
         });
         
         it("can throw when removing a user with invalid credentials (password)(undefined)", function(){
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve, reject
+            resolve();) => {
                 Users.remove(mike.id, undefined).catch((err)=>{
                     assert.ok(err);
                     console.log(err);
@@ -395,6 +396,7 @@ describe("Users-unitTest", function(){
             return new Promise((resolve, reject) => {
                 Users.get("nobody@example.com").then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
+                    resolve();
                 }).catch(reject).catch(reject);
             });
         });
@@ -403,6 +405,7 @@ describe("Users-unitTest", function(){
             return new Promise((resolve, reject) => {
                 Users.get("tomato").then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
+                    resolve();
                 }).catch(reject).catch(reject);
             });
         });
@@ -411,6 +414,7 @@ describe("Users-unitTest", function(){
             return new Promise((resolve, reject) => {
                 Users.get(1234).then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
+                    resolve();
                 }).catch(reject).catch(reject);
             });
         });
@@ -419,6 +423,7 @@ describe("Users-unitTest", function(){
             return new Promise((resolve, reject) => {
                 Users.get("123456781234567812345678").then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
+                    resolve();
                 }).catch(reject).catch(reject);
             });
         });
@@ -427,6 +432,7 @@ describe("Users-unitTest", function(){
             return new Promise((resolve, reject) => {
                 Users.get(undefined).then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
+                    resolve();
                 }).catch(reject).catch(reject);
             });
         });
