@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var Users;
 var mike;
+var mike_token;
 
 var config = require("../config.json");
 if(process.env.TRAVIS){ //change db to travis's own mongo
@@ -28,6 +29,21 @@ describe("Users-unitTest", function(){
     
     describe("Test General", function(){
         
+        before(function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
+                .catch(reject).then((user)=>{
+                    mike = user;
+                    user.validated = true;
+                    user.save().then(resolve).catch(reject);
+                });
+            });
+        });
+        
+        after(function(){
+            return Users.remove(mike.id, "I<3CatsNotDogs");
+        });
+        
         it("can register/login/remove user with valid credentials", function(){
             return new Promise((resolve, reject) => {
                 Users.register("Amy", "Tester", "amy.tester@example.com", "AGoodPassword").then((user)=>{
@@ -50,6 +66,33 @@ describe("Users-unitTest", function(){
                             }).catch(reject).catch(reject);
                         }).catch(reject).catch(reject);
                     });
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+        it("can generate and use tokens", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "sockauth", Date.now() + 300*1000).then((token)=>{
+                    assert.ok(token, "token was not provided");
+                    Users.useToken(mike.id, "sockauth", token).then((valid)=>{
+                        assert.equal(valid, true, "token was not usable");
+                        Users.useToken(mike.id, "sockauth", token).then((valid)=>{
+                            assert.equal(valid, false, "token was usable after already being used");
+                            resolve();
+                        }).catch(reject).catch(reject);
+                    }).catch(reject).catch(reject);
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+        it("can generate but wont pass expired", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "sockauth", Date.now() - 300*1000).then((token)=>{
+                    assert.ok(token, "token was not provided");
+                    Users.useToken(mike.id, "sockauth", token).then((valid)=>{
+                        assert.equal(valid, false, "token was usable even though expired");
+                        resolve();
+                    }).catch(reject).catch(reject);
                 }).catch(reject).catch(reject);
             });
         });
@@ -418,7 +461,7 @@ describe("Users-unitTest", function(){
             return Users.remove(mike.id, "I<3CatsNotDogs");
         });
     
-        it("can throw when getting a user with invalid credentials (search)(email no exist)", function(){
+        it("wont throw when getting a user with invalid credentials (search)(email no exist)", function(){
             return new Promise((resolve, reject) => {
                 Users.get("nobody@example.com").then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
@@ -427,7 +470,7 @@ describe("Users-unitTest", function(){
             });
         });
         
-        it("can throw when getting a user with invalid credentials (search)(invalid)", function(){
+        it("wont throw when getting a user with invalid credentials (search)(invalid)", function(){
             return new Promise((resolve, reject) => {
                 Users.get("tomato").then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
@@ -436,7 +479,7 @@ describe("Users-unitTest", function(){
             });
         });
         
-        it("can throw when getting a user with invalid credentials (search)(invalid2)", function(){
+        it("wont throw when getting a user with invalid credentials (search)(invalid2)", function(){
             return new Promise((resolve, reject) => {
                 Users.get(1234).then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
@@ -445,7 +488,7 @@ describe("Users-unitTest", function(){
             });
         });
         
-        it("can throw when getting a user with invalid credentials (search)(id no exist)", function(){
+        it("wont throw when getting a user with invalid credentials (search)(id no exist)", function(){
             return new Promise((resolve, reject) => {
                 Users.get("123456781234567812345678").then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
@@ -454,7 +497,7 @@ describe("Users-unitTest", function(){
             });
         });
         
-        it("can throw when getting a user with invalid credentials (search)(undefined)", function(){
+        it("wont throw when getting a user with invalid credentials (search)(undefined)", function(){
             return new Promise((resolve, reject) => {
                 Users.get(undefined).then((user)=>{
                     assert.equal(user, null, "get returned a user with an invalid search");
@@ -465,4 +508,221 @@ describe("Users-unitTest", function(){
         
     });
     
-})
+    describe("Test genToken", function(){
+    
+        before(function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
+                .catch(reject).then((user)=>{
+                    mike = user;
+                    user.validated = true;
+                    user.save().then(resolve).catch(reject);
+                });
+            });
+        });
+        
+        after(function(){
+            return Users.remove(mike.id, "I<3CatsNotDogs");
+        });
+        
+        it("can throw when generating tokens with invalid inputs (id)(no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken("123456781234567812345678", "sockauth", Date.now()+300*1000).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((token)=>{
+                    assert.ifError(token, "Invalid input passed gen");
+                }).catch(reject);
+            });
+        });
+    
+        it("can throw when generating tokens with invalid inputs (id)(invalid)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(1234, "sockauth", Date.now()+300*1000).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((token)=>{
+                    assert.ifError(token, "Invalid input passed gen");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when generating tokens with invalid inputs (id)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(undefined, "sockauth", Date.now()+300*1000).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((token)=>{
+                    assert.ifError(token, "Invalid input passed gen");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when generating tokens with invalid inputs (purpose)(invalid)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "invalid", Date.now()+300*1000).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((token)=>{
+                    assert.ifError(token, "Invalid input passed gen");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when generating tokens with invalid inputs (purpose)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "", Date.now()+300*1000).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((token)=>{
+                    assert.ifError(token, "Invalid input passed gen");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when generating tokens with invalid inputs (purpose)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, undefined, Date.now()+300*1000).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((token)=>{
+                    assert.ifError(token, "Invalid input passed gen");
+                }).catch(reject);
+            });
+        });
+        
+        it("wont throw generating tokens with invalid inputs (expires)(invalid)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "sockauth", "potato").then((token)=>{
+                    assert.ok(token, "invalid date did not generate token");
+                    resolve();
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+        it("wont throw generating tokens with invalid inputs (expires)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "sockauth", undefined).then((token)=>{
+                    assert.ok(token, "invalid date did not generate token");
+                    resolve();
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+    });
+    
+    describe("Test useToken", function(){
+    
+        before(function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
+                .catch(reject).then((user)=>{
+                    mike = user;
+                    user.validated = true;
+                    user.save().then(()=>{
+                        Users.genToken(mike.id, "sockauth", Date.now() + 300*1000).then((token)=>{
+                            mike_token = token;
+                            resolve();
+                        }).catch(reject);
+                    }).catch(reject);
+                });
+            });
+        });
+        
+        after(function(){
+            return Users.remove(mike.id, "I<3CatsNotDogs");
+        });
+        
+        it("can throw when using tokens with invalid inputs (id)(no exist)", function(){
+            return new Promise((resolve, reject) => {
+                Users.useToken("123456781234567812345678", "sockauth", mike_token).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((valid)=>{
+                    assert.equals(valid, true, "Invalid input passed use");
+                    assert.equals(valid, false, "Invalid input passed use (returned invalid instead of catch)");
+                }).catch(reject);
+            });
+        });
+    
+        it("can throw when using tokens with invalid inputs (id)(invalid)", function(){
+            return new Promise((resolve, reject) => {
+                Users.useToken(1234, "sockauth", mike_token).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((valid)=>{
+                    assert.equals(valid, true, "Invalid input passed use");
+                    assert.equals(valid, false, "Invalid input passed use (returned invalid instead of catch)");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when using tokens with invalid inputs (id)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.useToken(undefined, "sockauth", mike_token).catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((valid)=>{
+                    assert.equals(valid, true, "Invalid input passed use");
+                    assert.equals(valid, false, "Invalid input passed use (returned invalid instead of catch)");
+                }).catch(reject);
+            });
+        });
+        
+        it("wont throw when using tokens with invalid inputs (purpose)(invalid)", function(){
+            return new Promise((resolve, reject) => {
+                Users.useToken(mike.id, "invalid", mike_token).then((valid)=>{
+                    assert.equals(valid, false, "invalid purpose was usable?");
+                    resolve();
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+        it("wont throw when using tokens with invalid inputs (purpose)(blank)", function(){
+            return new Promise((resolve, reject) => {
+                Users.useToken(mike.id, "", mike_token).then((valid)=>{
+                    assert.equals(valid, false, "invalid purpose was usable?");
+                    resolve();
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+        it("wont throw when using tokens with invalid inputs (purpose)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.useToken(mike.id, undefined, mike_token).then((valid)=>{
+                    assert.equals(valid, false, "invalid purpose was usable?");
+                    resolve();
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+        it("wont throw using tokens with invalid inputs (token)(invalid)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "sockauth", "potato").then((valid)=>{
+                    assert.equals(valid, false, "invalid token was usable?");
+                    resolve();
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+        it("wont throw using tokens with invalid inputs (token)(undefined)", function(){
+            return new Promise((resolve, reject) => {
+                Users.genToken(mike.id, "sockauth", undefined).then((valid)=>{
+                    assert.equals(valid, false, "invalid token was usable?");
+                    resolve();
+                }).catch(reject).catch(reject);
+            });
+        });
+        
+    });
+    
+});
