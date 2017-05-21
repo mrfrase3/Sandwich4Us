@@ -30,26 +30,26 @@ describe("Users-unitTest", function(){
         
         it("can register/login/remove user with valid credentials", function(done){
             return new Promise((resolve, reject) => {
-                Users.register("Amy", "Tester", "amy.tester@example.com", "AGoodPassword").catch(reject).then((user)=>{
+                Users.register("Amy", "Tester", "amy.tester@example.com", "AGoodPassword").then((user)=>{
                     assert.equal(user.firstname, "Amy", "First name saved in registration is incorrect");
                     assert.equal(user.lastname, "Tester", "Last name saved in registration is incorrect");
                     assert.equal(user.email, "amy.tester@example.com", "email saved in registration is incorrect");
                     user.validated = true;
                     user.save(function(err){
                         assert.ifError(err);
-                        Users.login("amy.tester@example.com", "AGoodPassword").catch(reject).then((user)=>{
+                        Users.login("amy.tester@example.com", "AGoodPassword").then((user)=>{
                             assert.ok(user, "No user returned on 'successful' login");
                             assert.equal(user.email, "amy.tester@example.com", "user returned on login is incorrect");
-                            Users.remove(user.id, "AGoodPassword").catch(reject).then(()=>{
-                                Users.get("amy.tester@example.com").catch(reject).then((user)=>{
+                            Users.remove(user.id, "AGoodPassword").then(()=>{
+                                Users.get("amy.tester@example.com").then((user)=>{
                                     assert.equal(!!user, false, "registered user was not removed.");
                                     resolve();
-                                });
+                                }).catch(reject).catch(reject);
                                 
-                            });
-                        });
+                            }).catch(reject).catch(reject);
+                        }).catch(reject).catch(reject);
                     });
-                });
+                }).catch(reject).catch(reject);
             });
         });
         
