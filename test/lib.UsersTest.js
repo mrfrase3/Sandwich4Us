@@ -58,6 +58,21 @@ describe("Users-unitTest", function(){
     
     describe("Test Register", function(){
     
+        before(function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
+                .catch(reject).then((user)=>{
+                    mike = user;
+                    user.validated = true;
+                    user.save().then(resolve).catch(reject);
+                });
+            });
+        });
+        
+        after(function(){
+            return Users.remove(mike.id, "I<3CatsNotDogs");
+        });
+    
         it("can throw when registering user with invalid credentials (firstname)(bad match)", function(){
             return new Promise((resolve, reject) => {
                 Users.register("Jane9*$&^$", "Smith", "jane.smith@example.com", "StrongPassword").catch((err)=>{
@@ -121,6 +136,18 @@ describe("Users-unitTest", function(){
         it("can throw when registering user with invalid credentials (lastname)(undefined)", function(){
             return new Promise((resolve, reject) => {
                 Users.register("Jane", undefined, "jane.smith@example.com", "StrongPassword").catch((err)=>{
+                    assert.ok(err);
+                    console.log(err);
+                    resolve();
+                }).then((user)=>{
+                    assert.ifError(user, "Invalid credentials passed validation");
+                }).catch(reject);
+            });
+        });
+        
+        it("can throw when registering user with invalid credentials (email)(dupe)", function(){
+            return new Promise((resolve, reject) => {
+                Users.register("Jane", "Smith", "mike.jones@example.com", "StrongPassword").catch((err)=>{
                     assert.ok(err);
                     console.log(err);
                     resolve();
