@@ -95,14 +95,19 @@ app.post('/register', (req, res)=>{
         typeof req.body.reg_lastname  !== 'string' ||
         typeof req.body.reg_email     !== 'string' ||
         typeof req.body.reg_password  !== 'string' ||
-        typeof req.body.reg_password2 !== 'string'
+        typeof req.body.reg_password2 !== 'string' ||
+        typeof req.body.reg_agree     !== 'string'
     ){
         fill.forMessages = ["fields are missing, please contact an admin."];
-        return res.render('references', fill);
+        return res.render('register', fill);
     }
     if(req.body.reg_password !== req.body.reg_password2){
         fill.forMessages = ["Both Passwords provided do not match."];
-        return res.render('references', fill);
+        return res.render('register', fill);
+    }
+    if(req.body.reg_agree !== "agree"){
+        fill.forMessages = ["You must sell your soul, the sandwich is worth it."];
+        return res.render('register', fill);
     }
     
     users.register(req.body.reg_firstname, req.body.reg_lastname,
@@ -120,7 +125,7 @@ app.post('/register', (req, res)=>{
         fill.reg_lastname = req.body.reg_lastname;
         fill.reg_email = req.body.reg_email;
         fill.reg_agree = req.body.reg_agree;
-        return res.render('references', fill);
+        return res.render('register', fill);
     });
 });
 
