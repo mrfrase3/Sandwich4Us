@@ -20,12 +20,12 @@
                     <label for="reg-firstname">Your First Name:</label>
                     <input id="reg_firstname" name="reg_firstname" type="text" required 
                     maxlength="128" pattern="[\w][\w -]+" placeholder="Jane" 
-                    value="{{reg_name}}" class="pure-input-3-4"/>
+                    value="{{reg_firstname}}" class="pure-input-3-4"/>
                     
                     <label for="reg-lastname">Your Last Name:</label>
                     <input id="reg_lastname" name="reg_lastname" type="text" required 
                     maxlength="128" pattern="[\w][\w -]+" placeholder="Smith" 
-                    value="{{reg_name}}" class="pure-input-3-4"/>
+                    value="{{reg_lastname}}" class="pure-input-3-4"/>
                     
                     <label for="reg_email">Your Email:</label>
                     <input id="reg_email" name="reg_email" type="email" required 
@@ -42,7 +42,7 @@
                     
                     <label for="reg_agree" class="pure-checkbox">
                         <input id="reg_agree" name="reg_agree" required value="agree" 
-                        type="checkbox"> I agree to sell my soul for a sandwich
+                        type="checkbox" {{#if reg_agree}}checked{{/if}}> I agree to sell my soul for a sandwich
                     </label>
                     
                     <button type="submit" class="pure-button pure-button-primary">Register</button>

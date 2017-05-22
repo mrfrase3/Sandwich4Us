@@ -19,14 +19,23 @@
             <li class="pure-menu-item {{#if isPageReferences}}pure-menu-selected{{/if}}">
                 <a class="pure-menu-link" href="/references">Acknowledgements</a>
             </li>
-            {{#unless user}}
+            {{#if user}}
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover
+                {{#if isPageProfile}}pure-menu-selected{{/if}}">
+                    <a class="pure-menu-link" href="/profile">Hi, {{user.firstname}}</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item {{#if isPageProfile}}pure-menu-selected{{/if}}"><a class="pure-menu-link" href="/profile">Profile</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            {{else}}
                 <li class="pure-menu-item {{#if isPageLogin}}pure-menu-selected{{/if}}">
                     <a class="pure-menu-link" href="/login">Login</a>
                 </li>
                 <li class="pure-menu-item">
                     <a class="pure-menu-link" href="/">Register</a>
                 </li>
-            {{/unless}}
+            {{/if}}
         </ul>
     </div>
 </div>
