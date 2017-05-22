@@ -118,6 +118,8 @@ app.post('/register', (req, res)=>{
             email: user.email,
             id: user.id
         };
+        user.validated = true;
+        user.save();
         return res.redirect(301, '/');
     }).catch(errs=>{
         fill.formMessages = errs;
