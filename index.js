@@ -98,15 +98,15 @@ app.post('/register', (req, res)=>{
         typeof req.body.reg_password2 !== 'string' ||
         typeof req.body.reg_agree     !== 'string'
     ){
-        fill.forMessages = ["fields are missing, please contact an admin."];
+        fill.formMessages = ["fields are missing, please contact an admin."];
         return res.render('register', fill);
     }
     if(req.body.reg_password !== req.body.reg_password2){
-        fill.forMessages = ["Both Passwords provided do not match."];
+        fill.formMessages = ["Both Passwords provided do not match."];
         return res.render('register', fill);
     }
     if(req.body.reg_agree !== "agree"){
-        fill.forMessages = ["You must sell your soul, the sandwich is worth it."];
+        fill.formMessages = ["You must sell your soul, the sandwich is worth it."];
         return res.render('register', fill);
     }
     
@@ -120,7 +120,7 @@ app.post('/register', (req, res)=>{
         };
         return res.redirect(301, '/');
     }).catch(errs=>{
-        fill.forMessages = errs;
+        fill.formMessages = errs;
         fill.reg_firstname = req.body.reg_firstname;
         fill.reg_lastname = req.body.reg_lastname;
         fill.reg_email = req.body.reg_email;
@@ -143,7 +143,7 @@ app.post('/login', (req, res)=>{
         typeof req.body.login_email     !== 'string' ||
         typeof req.body.login_password  !== 'string'
     ){
-        fill.forMessages = ["fields are missing, please contact an admin."];
+        fill.formMessages = ["fields are missing, please contact an admin."];
         return res.render('login', fill);
     }
     
@@ -156,7 +156,7 @@ app.post('/login', (req, res)=>{
         };
         return res.redirect(301, '/');
     }).catch(errs=>{
-        fill.forMessages = errs;
+        fill.formMessages = errs;
         fill.reg_email = req.body.reg_email;
         return res.render('login', fill);
     });
