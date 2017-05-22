@@ -8,7 +8,7 @@ const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-const users = require('lib/Users.js')(mongoose);
+const users = require('./lib/Users.js')(mongoose);
 var app = express();
 var server;
 var redirectServer;
