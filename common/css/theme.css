@@ -97,6 +97,7 @@ html, button, input, select, textarea,
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);
+    overflow-y: initial;
 }
 
 .navbar #nav-menu-toggle:checked ~ label[for="nav-menu-toggle"] i.open {
@@ -227,6 +228,7 @@ span.pure-form-message.danger {
   		height: 100%;
   		padding: 0.5em 0;
   		box-shadow: 0 4px 5px 1px rgba(0,0,0,0.2);
+  		overflow-y: initial;
 	}
 
 	.navbar label[for="nav-menu-toggle"],
