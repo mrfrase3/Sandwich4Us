@@ -22,7 +22,7 @@ describe("Server-runTest", function(){
         server = require("../index.js");
         port = server.start();
         agent = new https.Agent({
-            host: 'host',
+            host: 'localhost',
             port: ''+port,
             path: '/',
             rejectUnauthorized: false
