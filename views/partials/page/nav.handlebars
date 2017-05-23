@@ -4,7 +4,7 @@
         <i class="material-icons closed">menu</i>
         <i class="material-icons open">close</i>
     </label>
-    <div class="pure-menu-horizontal">
+    <div class="pure-menu pure-menu-horizontal">
         <a class="pure-menu-link pure-menu-heading" href="/">
             <img src="./common/img/logo.svg" alt="Picture of a sandwich">
             Sandwich 4 Us
@@ -22,9 +22,11 @@
             {{#if user}}
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover
                 {{#if isPageProfile}}pure-menu-selected{{/if}}">
-                    <a class="pure-menu-link" href="/profile">Hi, {{user.firstname}}</a>
+                    <a class="pure-menu-link capname" href="/profile">Hi, {{user.firstname}}</a>
                     <ul class="pure-menu-children">
-                        <li class="pure-menu-item {{#if isPageProfile}}pure-menu-selected{{/if}}"><a class="pure-menu-link" href="/profile">Profile</a></li>
+                        <li class="pure-menu-item {{#if isPageProfile}}pure-menu-selected{{/if}}">
+                            <a class="pure-menu-link" href="/profile">Profile</a>
+                        </li>
                         <li class="pure-menu-item"><a class="pure-menu-link" href="/logout">Logout</a></li>
                     </ul>
                 </li>

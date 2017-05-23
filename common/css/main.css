@@ -1,3 +1,7 @@
+.capname {
+    text-transform: capitalize;
+}
+
 .sand-pref {
     list-style: none;
     padding-left: 0;
