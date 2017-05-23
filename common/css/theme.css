@@ -50,6 +50,11 @@ html, button, input, select, textarea,
     margin-right: 4em;
 }
 
+.navbar .pure-menu-horizontal .material-icons {
+    font-size: inherit;
+    vertical-align: middle;
+}
+
 .navbar .pure-menu-heading {
     font-family: 'Patrick Hand', cursive;
     font-weight: bold;
