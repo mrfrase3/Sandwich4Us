@@ -8,6 +8,7 @@ const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const users = require('./lib/Users.js')(mongoose);
 var app = express();
 var server;
@@ -87,8 +88,6 @@ app.get('/register', (req, res)=>{
 app.post('/register', (req, res)=>{
     var fill = {isPageIndex: true};
     if(req.session.user) return res.redirect(301, '/');
-    console.log(req.body);
-    
     
     if(
         typeof req.body.reg_firstname !== 'string' ||
