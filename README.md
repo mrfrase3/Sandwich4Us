@@ -4,8 +4,13 @@ sandwich matching website for CITS3403
 
 Check it out at https://sandwich4.us
 
-# Installation
-1. `git gud`
+## Installation ##
+Quite easy!
+
+ 1. Download the repo to your test directory
+ 2. Run `npm install`
+ 3. Place your SSL certificate files into the certs folder, naming them server.key and server.crt . Alternatively make self signed certificates by running `sudo bash ./sscerts.sh <domain>` where you replace `<domain>` with the domain of your server. If you are running on a local machine, you can just use `sudo bash ./sscerts.sh localhost`. If using this method, ensure openssl is installed on your system.
+ 4. Run `npm start`
 
 # Configuration
 
@@ -32,20 +37,20 @@ FE = Front End, BE = Back End, FS = Full Stack
 
  - [x] BE add config file
  - [x] BE add https
- - [ ] FE implement pure css
+ - [x] FE implement pure css
  - [x] FE implement jquery
  - [ ] FE add sweat alert
  - [x] BE add handlebars
- - [ ] BE add load in for mongo
+ - [x] BE add load in for mongo
  - [ ] FS add socket.io
  - [x] BE add Travis CI for unit testing
 
- - [ ] FS implement login/users
+ - [x] FS implement login/users/tokens
    - [x] FE make registration form
    - [x] FE make login form
-   - [ ] BE implement mongo user database
-   - [ ] BE implement sessions with mongo session store
-   - [ ] FS add socket login calls / socket auth
+   - [x] BE implement mongo user database w/ tokens
+   - [x] BE implement sessions with mongo session store
+   - [x] FS add socket login calls / socket auth?
 
  - [ ] FS implement match requests
    - [ ] FE Redo match request form
@@ -67,3 +72,4 @@ FE = Front End, BE = Back End, FS = Full Stack
    - [ ] FE Add links to profile in the navbar, match browser and messenger
 
  - [ ] FE add notifications (add to existing socket event handlers)
+ - [ ] email validation?
