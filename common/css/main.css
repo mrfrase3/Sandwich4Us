@@ -2,67 +2,6 @@
     text-transform: capitalize;
 }
 
-.sand-pref {
-    list-style: none;
-    padding-left: 0;
-    min-width: 22em;
-}
-
-.sand-pref li{
-    height: 24px;
-    text-transform: capitalize;
-}
-
-.sand-pref label {
-    margin-bottom: 1em;
-    font-size: 1.05em;
-    border-bottom: lightgray 1px solid;
+input#req-loc {
     display: inline-block;
-}
-
-.sand-pref-checkbox {
-    width: 48px;
-    height: 24px;
-    display: inline-block;
-    float: left;
-    position: relative;
-    text-align: center;
-    margin: 0 1.5em;
-}
-
-.sand-pref-checkbox input {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 1;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.sand-pref-checkbox.want {
-    color: #68db97;
-}
-
-.sand-pref-checkbox.have {
-    color: #ffdfba;
-}
-
-.sand-pref-checkbox .unchecked {
-    color: grey;
-}
-
-.sand-pref-checkbox .checked {
-    display: none;
-}
-
-.sand-pref-checkbox input:hover ~ .checked,
-.sand-pref-checkbox input:checked ~ .checked {
-    display: block;
-}
-
-.sand-pref-checkbox input:hover ~ .unchecked,
-.sand-pref-checkbox input:checked ~ .unchecked {
-    display: none;
 }

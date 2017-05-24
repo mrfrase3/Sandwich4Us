@@ -83,6 +83,7 @@ app.get('/', (req, res)=>{
     var fill = {isPageIndex: true, user: req.session.user};
 	if(!req.session.user) return res.render('register', fill);
 	fill.isPageRequest = true;
+	fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
 	res.render('request', fill);
 });
 

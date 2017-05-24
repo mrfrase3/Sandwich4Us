@@ -1,17 +1,14 @@
-{
 
-    import MaterialDateTimePicker from 'material-datetime-picker';
+import MaterialDateTimePicker from 'material-datetime-picker';
 
-    const picker = new MaterialDateTimePicker().on('submit', (value) => {
-        $(".c-datepicker-input").val( value.format("HH:mm DD/MM/YYYY") );
-    });
-    
-    $(".c-datepicker-input").click( () => picker.open());
+const picker = new MaterialDateTimePicker().on('submit', (value) => {
+    $(".c-datepicker-input").val( value.format("HH:mm DD/MM/YYYY") );
+});
 
-}
+$(".c-datepicker-input").click( () => picker.open());
 
 var getLoc = {lat: -26.0906899, lng: 128.1506632};
-var initMap = () => {
+var initMap = function(){
     
     // setup objects //
     
