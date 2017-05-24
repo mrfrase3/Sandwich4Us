@@ -44,6 +44,7 @@ var initMap = function(){
         getLoc = e.latLng;
         marker.setPosition(getLoc);
         circle.setCenter(getLoc);
+        map.setCenter(getLoc);
     };
     
     let geoErr = (hasGeo) => { alert("Could not get your location. " + hasGeo) };
@@ -57,6 +58,7 @@ var initMap = function(){
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 updatePos({latLng: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)});
+                map.setZoom(3);
             }, ()=> {
                 geoErr(true);
             });
@@ -64,6 +66,6 @@ var initMap = function(){
     });
     
     $('input#req-dist').change(()=>{
-        circle.setRadius((Number($(this).val()) || 5) * 1000);
+        circle.setRadius((Number($('input#req-dist').val()) || 5) * 1000);
     });
 };
