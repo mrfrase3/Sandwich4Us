@@ -109,7 +109,10 @@ div#req_getLocMap {
 }
 
 @media (min-width: 64em) {
-    .req-ing-table td, .req-ing-table th{
+    .req-ing-table td,
+    .req-ing-table th,
+    .req-ing-table td:first-child,
+    .req-ing-table th:first-child{
         display: table-cell;
         width: auto;
         border-bottom: 1px solid #cbcbcb;
