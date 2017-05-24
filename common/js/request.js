@@ -2,10 +2,11 @@
 /*import MaterialDateTimePicker from 'material-datetime-picker';*/
 {
 
-    let dp_soon = moment().add(1, 'h').minute(0);
+    let dp_soon = moment().add(2, 'h').minute(0);
     $(".c-datepicker-input").val( dp_soon.format("HH:mm DD/MM/YYYY") );
     
     const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', (value) => {
+        if(value.toDate() < Date.now()) value = moment().add(2, 'h').minute(0);
         $(".c-datepicker-input").val( value.format("HH:mm DD/MM/YYYY") );
     });
     

@@ -9,3 +9,8 @@ input#req-loc {
 input.c-datepicker-input {
     cursor: pointer;
 }
+
+div#req_getLocMap {
+    width: 100%;
+    height: 40vh;
+}
