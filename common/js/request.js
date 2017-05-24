@@ -47,11 +47,24 @@ var initMap = function(){
     
     // setup helper functions //
     
-    let updatePos = (e)=>{
-        getLoc = e.latLng;
-        marker.setPosition(getLoc);
-        circle.setCenter(getLoc);
-        map.setCenter(getLoc);
+    let updatePos = (e, dontName)=>{
+        if(dontName){
+            getLoc = e.latLng;
+            marker.setPosition(getLoc);
+            circle.setCenter(getLoc);
+            map.setCenter(getLoc);
+        } else {
+            geocoder.geocode( { location: e.latLng}, (results, status) => {
+                if (status == 'OK') {
+                    updatePos({latLng: results[0].geometry.location}, true);
+                    $('input#req-loc').val(results[0].formatted_address);
+                } else {
+                    console.log(status);
+                    updatePos({latLng: e.latLng});
+                }
+                map.setZoom(14);
+            });
+        }
     };
     
     let geoErr = (hasGeo) => { alert("Could not get your location. " + hasGeo) };
@@ -65,15 +78,7 @@ var initMap = function(){
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 let geoloc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                geocoder.geocode( { location: geoloc}, (results, status) => {
-                    if (status == 'OK') {
-                        updatePos({latLng: results[0].geometry.location});
-                        $('input#req-loc').val(results[0].formatted_address);
-                    } else {
-                        updatePos({latLng: geoloc});
-                    }
-                    map.setZoom(14);
-                });
+                updatePos({latLng: geoloc});
             }, ()=> {
                 geoErr(true);
             });
@@ -88,7 +93,7 @@ var initMap = function(){
         setTimeout( ()=>{
             geocoder.geocode( { address: $('input#req-loc').val(), region: 'au'}, (results, status) => {
                 if (status == 'OK') {
-                    updatePos({latLng: results[0].geometry.location});
+                    updatePos({latLng: results[0].geometry.location}, true);
                     console.log(results);
                     //$('input#req-loc').val(results[0].formatted_address);
                 } else {
