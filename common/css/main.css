@@ -21,10 +21,17 @@ div#req_getLocMap {
     text-align: center;
 }
 
-.req-ing,
-.req-want-table,
-.req-have-table{
+.req-ing-wrap div,
+.req-ing-wrap table {
     display: inline-block;
+}
+
+.req-want-table tbody,
+.req-have-table tbody,
+.req-ing-table tbody {
+    y-overflow: auto;
+    height: 50vh;
+    text-align: left;
 }
 
 .req-ing-table input[name="req-want"],
@@ -45,7 +52,7 @@ div#req_getLocMap {
     color: grey;
 }
 
-.req-ing-table span.names {
+.req-ing-table span.name {
     font-weigth: bold;
     font-size: 1.1em;
 }

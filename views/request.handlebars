@@ -32,31 +32,35 @@
             <fieldset>
                 <legend>Sandwich Ingredients</legend>
                 <div class="req-ing-wrap">
-                    <div class="req-ing">
-                        <input id="req-ing-search" placeholder="Search for ingredients" type="text" />
-                        <button class="pure-button"><i class="material-icons">search</i></button>
-                        <table class="pure-table pure-table-horizontal req-ing-table">
-                            <tbody>
-                                {{#each ingredients}}
-                                    <tr data-text="{{name}} {{#each tags}}{{this}} {{/each}}">
-                                        <td>
-                                            <span class="capname name">{{name}}</span>
-                                            <br>
-                                            <span class="tags">{{#each tags}}{{this}} {{/each}}</span>
-                                        </td>
-                                        <td>
-                                            <input id="req-want-{{@index}}" name="req-want" type="checkbox" value="{{name}}" />
-                                            <label for="req-want-{{@index}}" class="pure-button">Want</label>
-                                        </td>
-                                        <td>
-                                            <input id="req-have-{{@index}}" name="req-have" type="checkbox" value="{{name}}" />
-                                            <label for="req-have-{{@index}}" class="pure-button">Have</label>
-                                        </td>
-                                    </tr>
-                                {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="pure-table pure-table-horizontal req-ing-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input id="req-ing-search" placeholder="Search for ingredients" type="text" />
+                                    <button class="pure-button"><i class="material-icons">search</i></button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each ingredients}}
+                                <tr data-text="{{name}} {{#each tags}}{{this}} {{/each}}">
+                                    <td>
+                                        <span class="capname name">{{name}}</span>
+                                        <br>
+                                        <span class="tags">{{#each tags}}{{this}} {{/each}}</span>
+                                    </td>
+                                    <td>
+                                        <input id="req-want-{{@index}}" name="req-want" type="checkbox" value="{{name}}" {{#if want}}checked{{/if}} />
+                                        <label for="req-want-{{@index}}" class="pure-button">Want</label>
+                                    </td>
+                                    <td>
+                                        <input id="req-have-{{@index}}" name="req-have" type="checkbox" value="{{name}}" {{#if want}}checked{{/if}} />
+                                        <label for="req-have-{{@index}}" class="pure-button">Have</label>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
                     <table class="pure-table pure-table-horizontal req-want-table">
                         <thead>
                             <tr>
