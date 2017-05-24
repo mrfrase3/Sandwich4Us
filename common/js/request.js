@@ -85,15 +85,17 @@ var initMap = function(){
     });
     
     $('input#req-loc').change( e => {
-        geocoder.geocode( { address: $('input#req-loc').val(), region: 'au'}, (results, status) => {
-            if (status == 'OK') {
-                updatePos({latLng: results[0].geometry.location});
-                console.log(results);
-                //$('input#req-loc').val(results[0].formatted_address);
-            } else {
-                alert('Adress lookup failed. ' + status);
-            }
-            map.setZoom(14);
-        });
+        setTimeout( ()=>{
+            geocoder.geocode( { address: $('input#req-loc').val(), region: 'au'}, (results, status) => {
+                if (status == 'OK') {
+                    updatePos({latLng: results[0].geometry.location});
+                    console.log(results);
+                    //$('input#req-loc').val(results[0].formatted_address);
+                } else {
+                    alert('Adress lookup failed. ' + status);
+                }
+                map.setZoom(14);
+            });
+        }, 100);
     });
 };
