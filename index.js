@@ -25,18 +25,26 @@ if(config.server.https.enabled){
     };
     server = require('https').createServer(keys, app);
     if(config.server.http.enabled){
-        redirectServer = require('http').Server();
-        redirectServer.on('request', function(req, res){
+        redirectServer = require('http').createServer( function(req, res){
             let report = ':' + (config.server.https.port || 3001);
             if(report == ':443') report = '';
-            res.writeHead(301,
-              {Location: 'https://'+req.headers.host+report+req.url}
+            res.writeHead(302,
+                {Location: 'https://'+req.headers.host+report+req.url}
             );
             res.end();
+            console.log(req.headers.host);
         });
         redirectServer.listen((config.server.http.port || 3000));
     }
     port = (config.server.https.port || 3001);
+    
+    app.use(function(req,res,next) {
+        if (!/https/.test(req.protocol)){
+            res.redirect("https://" + req.headers.host + req.url);
+        } else {
+            return next();
+        } 
+    });
 } else {
     server = require('http').Server(app);
     port = (config.server.http.port || 3000);
