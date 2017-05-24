@@ -5,6 +5,7 @@
 input#req-loc,
 input#req-ing-search{
     display: inline-block;
+    font-weight: normal;
 }
 
 input.c-datepicker-input {
@@ -26,11 +27,16 @@ div#req_getLocMap {
     display: inline-block;
 }
 
+.req-want-table,
+.req-have-table,
+.req-ing-table {
+    y-overflow: auto;
+    height: 50vh;
+}
+
 .req-want-table tbody,
 .req-have-table tbody,
 .req-ing-table tbody {
-    y-overflow: auto;
-    height: 50vh;
     text-align: left;
 }
 
