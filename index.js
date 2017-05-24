@@ -84,6 +84,7 @@ app.get('/', (req, res)=>{
 	if(!req.session.user) return res.render('register', fill);
 	fill.isPageRequest = true;
 	fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
+	fill.ingredients = require('./lib/ingredients.json');
 	res.render('request', fill);
 });
 

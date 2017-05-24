@@ -1,0 +1,1058 @@
+[
+    {
+        name: "white bread"
+        tags: [
+            "bread external"
+        ]
+    },
+    {
+        name: "wholemeal bread"
+        tags: [
+            "bread external"
+        ]
+    },
+    {
+        name: "80c bread"
+        tags: [
+            "bread external"
+        ]
+    },
+    {
+        name: "rye bread"
+        tags: [
+            "bread external"
+        ]
+    },
+    {
+        name: "wholegrain bread"
+        tags: [
+            "bread external"
+        ]
+    },
+    {
+        name: "white wrap"
+        tags: [
+            "wrap external"
+        ]
+    },
+    {
+        name: "wholemeal wrap"
+        tags: [
+            "wrap external"
+        ]
+    },
+    {
+        name: "hotdog bun"
+        tags: [
+            "bun external"
+        ]
+    },
+    {
+        name: "white bun"
+        tags: [
+            "bun external"
+        ]
+    },
+    {
+        name: "wholemeal bun"
+        tags: [
+            "bun external"
+        ]
+    },
+    {
+        name: "mild salami"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "hot salami"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "mild chorizo"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "hot chorizo"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "smoked leg ham"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "honey leg ham"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "hungarian salami"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "prosciutto"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "pancetta"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "coppa"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "pastrami"
+        tags: [
+            "cured sausage meat filling"
+        ]
+    },
+    {
+        name: "beef sausage"
+        tags: [
+            "sausage cooked meat filling"
+        ]
+    },
+    {
+        name: "pork sausage"
+        tags: [
+            "sausage cooked meat filling"
+        ]
+    },
+    {
+        name: "chicken sausage"
+        tags: [
+            "sausage cooked meat filling"
+        ]
+    },
+    {
+        name: "beef steak"
+        tags: [
+            "cooked meat filling"
+        ]
+    },
+    {
+        name: "pork fillet/chop"
+        tags: [
+            "cooked meat filling"
+        ]
+    },
+    {
+        name: "pulled pork"
+        tags: [
+            "cooked meat filling"
+        ]
+    },
+    {
+        name: "pork belly"
+        tags: [
+            "cooked meat filling"
+        ]
+    },
+    {
+        name: "woolies roast chicken"
+        tags: [
+            "chicken cooked meat filling"
+        ]
+    },
+    {
+        name: "chicken breast"
+        tags: [
+            "chicken cooked meat filling"
+        ]
+    },
+    {
+        name: "chicken cutlets"
+        tags: [
+            "chicken cooked meat filling"
+        ]
+    },
+    {
+        name: "chicken parmigiana"
+        tags: [
+            "chicken cooked meat filling"
+        ]
+    },
+    {
+        name: "streaky bacon"
+        tags: [
+            "cooked meat filling"
+        ]
+    },
+    {
+        name: "rasher bacon"
+        tags: [
+            "cooked meat filling"
+        ]
+    },
+    {
+        name: "diced bacon"
+        tags: [
+            "cooked meat filling"
+        ]
+    },
+    {
+        name: "egg"
+        tags: [
+            "special filling"
+        ]
+    },
+    {
+        name: "tasty cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "mild cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "vintage cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "colby cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "epicure cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "swiss cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "cheddar cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "old english cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "american orange \"cheese\""
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "plastic cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "greek fetta cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "four cheese mix"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "pizza cheese mix"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "halloumi cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "goats cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "danish fetta cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "generic fetta cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "vintage cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "parmesan cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "mozzarella cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "bocconcini cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "mascarpone cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "cream cheese"
+        tags: [
+            "condiment cheese dairy filling"
+        ]
+    },
+    {
+        name: "cottage cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "ricotta cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "brie cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "camembert cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "blue brie cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "white cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "blue cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "paneer cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "havarti cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "edam cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "maasdam cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "truffle cheddar cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "dutch log cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "gouda cheese"
+        tags: [
+            "cheese dairy filling"
+        ]
+    },
+    {
+        name: "brown onion"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "red onion"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "carrot"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "olives"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "brown onion"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "mushroom cups"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "mushrooms flat"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "beetroot"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "chilli"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "kale"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "cucumber"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "avocado"
+        tags: [
+            "condiment salad filling"
+        ]
+    },
+    {
+        name: "gourmet tomato"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "roma tomato"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "cherry tomato"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "truss tomato"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "grape tomato"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "iceberg lettuce"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "oakleaf lettuce"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "capsicum"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "beans"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "snow peas"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "sugar snap peas"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "chinese broccoli"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "cabbage"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "spring onion"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "random salad mix"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "cos lettuce"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "watercress"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "butter lettuce"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "rocket"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "spinach"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "bean sprouts"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "coleslaw"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "mesclun mix lettuce"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "dill"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "fresh mint"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "basil"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "chives"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "parsley"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "baked beans"
+        tags: [
+            "special filling"
+        ]
+    },
+    {
+        name: "sundried tomato"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "pickle"
+        tags: [
+            "salad filling"
+        ]
+    },
+    {
+        name: "canned tuna"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "canned salmon"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "canned dolphin"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "spam"
+        tags: [
+            "meat filling"
+        ]
+    },
+    {
+        name: "canned sardines"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "canned smoked mussels"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "canned mackerel"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "canned oysters"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "anchovy"
+        tags: [
+            "fish filling"
+        ]
+    },
+    {
+        name: "dijon mustard"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "wholegrain mustard"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "american mustard"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "english mustard"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "australian mustard"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "honey mustard"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "plain mayonnaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "whole egg mayonnaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "deli style mayonnaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "lite mayonnaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "aioli"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "garlic aioli mayonnaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "traditional mayonnaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "nandos perinaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "chipotle"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "hollandaise"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "cranberry sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "worcestershire sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "plum sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "peri peri sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "lemon juice"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "lime juice"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "mint sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "apple sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "bearnaise sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "tartare sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "bbq sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "steak sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "horseradish"
+        tags: [
+            "condiment filling"
+        ]
+    },
+    {
+        name: "tomato relish"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "fruit relish"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "tomato chutney"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "fruit chutney"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "tomato sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "sweet chilli sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "soy sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "satay sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "fish sauce"
+        tags: [
+            "condiment sauce filling"
+        ]
+    },
+    {
+        name: "honey"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "peanut butter"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "strawberry jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "raspberry jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "blackberry jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "blackcurrent jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "plum jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "apricot jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "orange marmalade"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "lemon marmalade"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "cherry jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "fig jam"
+        tags: [
+            "condiment spread filling"
+        ]
+    },
+    {
+        name: "nutella"
+        tags: [
+            "condiment spread filling"
+        ]
+    }
+]

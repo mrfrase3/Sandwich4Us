@@ -3,11 +3,11 @@
 {
 
     let dp_soon = moment().add(2, 'h').minute(0);
-    $(".c-datepicker-input").val( dp_soon.format("HH:mm DD/MM/YYYY") );
+    $(".c-datepicker-input").val( dp_soon.format("HH:mm YYYY/MM/DD") );
     
     const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', value => {
         if(value.toDate() < Date.now()) value = moment().add(2, 'h').minute(0);
-        $(".c-datepicker-input").val( value.format("HH:mm DD/MM/YYYY") );
+        $(".c-datepicker-input").val( value.format("HH:mm YYYY/MM/DD") );
     });
     
     $(".c-datepicker-input").focus( e => {
@@ -17,14 +17,14 @@
     
 }
 
-var getLoc;
+
 var initMap = function(){
     
     // setup objects //
     let geocoder = new google.maps.Geocoder();
     let autocomplete = new google.maps.places.Autocomplete(document.getElementById('req-loc'), {componentRestrictions: {country: 'au'}});
     
-    getLoc = new google.maps.LatLng( -26.0906899, 128.1506632);
+    let getLoc = new google.maps.LatLng( -26.0906899, 128.1506632);
     
     let map = new google.maps.Map(document.getElementById('req_getLocMap'), {
       center: getLoc,
@@ -42,7 +42,8 @@ var initMap = function(){
         radius: (Number($('input#req-dist').val()) || 2) * 1000,
         fillColor: "#004445",
         fillOpacity: 0.5,
-        strokeWeight: 0
+        strokeWeight: 0,
+        clickable: false
     });
     
     // setup helper functions //
@@ -53,6 +54,8 @@ var initMap = function(){
             marker.setPosition(getLoc);
             circle.setCenter(getLoc);
             map.setCenter(getLoc);
+            $('input#req-lat').val(getLoc.lat());
+            $('input#req-long').val(getLoc.lng());
         } else {
             geocoder.geocode( { location: e.latLng}, (results, status) => {
                 if (status == 'OK') {

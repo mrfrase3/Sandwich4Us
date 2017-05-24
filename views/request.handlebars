@@ -21,12 +21,38 @@
                     </div>
                     <div class="pure-u-1">
                         <label for="req-loc">Location:</label>
-                        <input class="pure-u-5-6" id="req-loc" name="req-loc" type="text" required data-map-api-key="{{GoogleMapsAPIKey}}"/>
+                        <input class="pure-u-5-6" id="req-loc" name="req-loc" type="text" required />
+                        <input id="req-lat" name="req-lat" type="hidden" />
+                        <input id="req-long" name="req-long" type="hidden" />
                         <button type="button" class="pure-button getloc"><i class="material-icons">my_location</i></button>
                     </div>
                 </div>
+                <div id="req_getLocMap"></div>
+            </fieldset>
+            <fieldset>
+                <legend>Sandwich Ingredients</legend>
+                <table class="pure-table pure-table-horizontal">
+                    <tbody>
+                        {{#each ingredients}}
+                            <tr data-text="{{name}} {{#each tags}}{{this}} {{/each}}">
+                                <td class="pure-u-3-5">
+                                    <span class="capname">{{name}}</span>
+                                    <br>
+                                    <span class="tags">{{#each tags}}{{this}} {{/each}}</span>
+                                </td>
+                                <td class="pure-u-1-5">
+                                    <input id="req-want-{{@index}}" name="req-want" type="checkbox" value="{{name}}" />
+                                    <label for="req-want-{{@index}}" class="pure-button">Want</label>
+                                </td>
+                                <td class="pure-u-1-5">
+                                    <input id="req-have-{{@index}}" name="req-have" type="checkbox" value="{{name}}" />
+                                    <label for="req-have-{{@index}}" class="pure-button">Have</label>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </fieldset>
         </form>
-        <div id="req_getLocMap"></div>
     </div>
 </section>
