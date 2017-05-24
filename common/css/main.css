@@ -5,3 +5,7 @@
 input#req-loc {
     display: inline-block;
 }
+
+input.c-datepicker-input {
+    cursor: pointer;
+}
