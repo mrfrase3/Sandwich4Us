@@ -73,7 +73,7 @@ var initMap = function(){
                         updatePos({latLng: geoloc});
                     }
                     map.setZoom(14);
-                }
+                });
             }, ()=> {
                 geoErr(true);
             });
@@ -93,6 +93,6 @@ var initMap = function(){
                 alert('Adress lookup failed. ' + status);
             }
             map.setZoom(14);
-        }
+        });
     });
 };
