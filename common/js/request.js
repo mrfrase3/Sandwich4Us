@@ -85,7 +85,7 @@ var initMap = function(){
     });
     
     $('input#req-loc').change( e => {
-        geocoder.geocode( { location: $('input#req-loc').val()}, (results, status) => {
+        geocoder.geocode( { address: $('input#req-loc').val()}, (results, status) => {
             if (status == 'OK') {
                 updatePos({latLng: results[0].geometry.location});
                 //$('input#req-loc').val(results[0].formatted_address);
