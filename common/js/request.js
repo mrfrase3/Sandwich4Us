@@ -58,7 +58,7 @@ var initMap = function(){
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 updatePos({latLng: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)});
-                map.setZoom(3);
+                map.setZoom(14);
             }, ()=> {
                 geoErr(true);
             });
