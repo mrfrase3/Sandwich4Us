@@ -22,7 +22,7 @@ var initMap = function(){
     
     // setup objects //
     let geocoder = new google.maps.Geocoder();
-    let autocomplete = new google.maps.places.Autocomplete(document.getElementById('req-loc'))
+    let autocomplete = new google.maps.places.Autocomplete(document.getElementById('req-loc'), {componentRestrictions: {country: 'au'}});
     
     getLoc = new google.maps.LatLng( -26.0906899, 128.1506632);
     
@@ -85,7 +85,7 @@ var initMap = function(){
     });
     
     $('input#req-loc').change( e => {
-        geocoder.geocode( { location: geoloc}, (results, status) => {
+        geocoder.geocode( { location: $('input#req-loc').val()}, (results, status) => {
             if (status == 'OK') {
                 updatePos({latLng: results[0].geometry.location});
                 //$('input#req-loc').val(results[0].formatted_address);
