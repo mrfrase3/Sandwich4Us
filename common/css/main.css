@@ -69,21 +69,49 @@ div#req_getLocMap {
     position: relative;
 }
 
+.req-want-table tr td:hover,
+.req-have-table tr td:hover{
+    background-color: #e44234;
+}
+
 .req-want-table tr td:hover::after,
 .req-have-table tr td:hover::after{
     position: absolute;
-    /* display: block; */
-    top: 0;
+    top: 0.2em;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 1.5em;
     text-align: center;
     background-color: #e44234;
     color: white;
-    /* vertical-align: middle; */
-    /* line-height: normal; */
     font-size: 1.5em;
-    font-weight: bold;
-    content: 'x';
+    content: '\E92B';
     cursor: pointer;
+    font-family: 'Material Icons';
+}
+
+.req-ing-table td {
+    width: 30%;
+    display: inline-block;
+}
+
+.req-ing-table td:first-child {
+    width: 100%;
+    border-bottom: 0;
+}
+
+.req-ing-table th {
+    display: none;
+}
+
+.req-ing-table th:first-child {
+    display: table-cell;
+}
+
+@media (min-width: 64em) {
+    .req-ing-table td, .req-ing-table th{
+        display: table-cell;
+        width: auto;
+        border-bottom: 1px solid #cbcbcb;
+    }
 }
