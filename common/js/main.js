@@ -46,21 +46,4 @@
 
 	setupSectionToggle()
 
-	var setupPrefCB = function(){ // this makes it so you cannot have an ingredient selected as both "want" and "have" at the same time
-		var cbs = document.querySelectorAll(".sand-pref-checkbox input[type=checkbox]"); // for all the checkboxes
-		for (var i = 0; i < cbs.length; i++) {
-			cbs[i].onchange = function(e){     // add a on change handler
-				if(!e.target.checked) return;  // that if it has been checked to true
-				var value = e.target.value;
-				if(e.target.getAttribute("name") == "sand-pref-want"){ // we set the corresponding to false
-					document.querySelector('.sand-pref-checkbox input[name="sand-pref-have"][value="'+value+'"]').checked = false;
-				} else if(e.target.getAttribute("name") == "sand-pref-have"){
-					document.querySelector('.sand-pref-checkbox input[name="sand-pref-want"][value="'+value+'"]').checked = false;
-				}
-			}
-		}
-	}
-
-	setupPrefCB()
-
 }

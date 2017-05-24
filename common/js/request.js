@@ -3,16 +3,42 @@
 {
 
     let dp_soon = moment().add(2, 'h').minute(0);
-    $(".c-datepicker-input").val( dp_soon.format("HH:mm YYYY/MM/DD") );
+    $('.c-datepicker-input').val( dp_soon.format('HH:mm YYYY/MM/DD') );
     
     const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', value => {
         if(value.toDate() < Date.now()) value = moment().add(2, 'h').minute(0);
-        $(".c-datepicker-input").val( value.format("HH:mm YYYY/MM/DD") );
+        $('.c-datepicker-input').val( value.format('HH:mm YYYY/MM/DD') );
     });
     
-    $(".c-datepicker-input").focus( e => {
+    $('.c-datepicker-input').focus( e => {
         e.preventDefault();
         picker.open();
+    });
+    
+    $('.req-ing-table input[name="req-want"], .req-ing-table input[name="req-have"]').change(function(e){
+        
+        if($(this).attr('name') === 'req-want'){ //set the other to false
+            if( !$(this).is(':checked') ){
+                $('input[name="req-have"][value="'+$(this).attr('value')+'"]').prop('checked', false);
+            }
+        } else {
+            if( !$(this).is(':checked') ){
+                $('input[name="req-want"][value="'+$(this).attr('value')+'"]').prop('checked', false);
+            }
+        }
+        
+        $('.req-have-table tbody tr, .req-want-table tbody tr').remove();
+        $('.req-ing-table input[name="req-want"]:checked .name').each(function(){
+            $('.req-want-table tbody').append('<tr><td>'+$(this).text()+'</td></tr>');
+        });
+        $('.req-ing-table input[name="req-have"]:checked .name').each(function(){
+            $('.req-have-table tbody').append('<tr><td>'+$(this).text()+'</td></tr>');
+        });
+    });
+    
+    $('input#req-ing-search').keyup(function(){
+        $('.req-ing-table tbody tr').hide();
+        $('.req-ing-table tbody tr[data-text~="'+$(this).val()+'"]').show();
     });
     
 }

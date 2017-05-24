@@ -30,7 +30,7 @@ div#req_getLocMap {
 .req-want-table,
 .req-have-table,
 .req-ing-table {
-    y-overflow: auto;
+    overflow-y: auto;
     height: 50vh;
 }
 
