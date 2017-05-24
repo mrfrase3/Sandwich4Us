@@ -22,5 +22,17 @@
     },
     "session": {
         "secret": "onlytellyourcat"
+    },
+    "smtp": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "user@gmail.com",
+            "pass": "pass"
+        }
+    },
+    "other": {
+        "GoogleMapsAPIKey": "AIzaSyC60FIS96vrtGclB0aTX6Ez56dNS8Qi5ns"
     }
 }

@@ -6,3 +6,10 @@
 <script src="./common/js/main.js"></script>
 <script src="./common/js/pure-menu.js"></script>
 <!--<script src="./common/js/{{@exphbs.view}}.js"></script>-->
+{{#if isPageRequire}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.standalone.js"></script>
+    <script src="common/js/material-datetime-picker.js" charset="utf-8"></script>
+    <script src="common/js/request.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{GoogleMapsAPIKey}}&callback=initMap"></script>
+{{/if}}
