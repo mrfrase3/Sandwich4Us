@@ -25,18 +25,22 @@
         
         setTimeout(()=>{
             $('.req-have-table tbody tr, .req-want-table tbody tr').remove();
-            $('.req-ing-table input[name="req-want"]:checked .name').each(function(){
-                $('.req-want-table tbody').append('<tr><td>'+$(this).text()+'</td></tr>');
+            $('.req-ing-table input[name="req-want"]:checked').each(function(){
+                $('.req-want-table tbody').append('<tr><td>'+$(this).attr('value')+'</td></tr>');
             });
-            $('.req-ing-table input[name="req-have"]:checked .name').each(function(){
-                $('.req-have-table tbody').append('<tr><td>'+$(this).text()+'</td></tr>');
+            $('.req-ing-table input[name="req-have"]:checked').each(function(){
+                $('.req-have-table tbody').append('<tr><td>'+$(this).attr('value')+'</td></tr>');
             });
         }, 50);
     });
     
     $('input#req-ing-search').keyup(function(){
-        $('.req-ing-table tbody tr').hide();
-        $('.req-ing-table tbody tr[data-text*="'+$(this).val()+'"]').show();
+        if($(this).val().trim() !== ''){
+            $('.req-ing-table tbody tr').hide();
+            $('.req-ing-table tbody tr[data-text*="'+$(this).val()+'"]').show();
+        } else {
+            $('.req-ing-table tbody tr').show();
+        }
     });
     
 }
