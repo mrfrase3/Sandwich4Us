@@ -29,10 +29,9 @@ if(config.server.https.enabled){
             let report = ':' + (config.server.https.port || 3001);
             if(report == ':443') report = '';
             res.writeHead(302,
-                {Location: 'https://'+req.headers.host+report+req.url}
+                {Location: 'https://'+req.headers.host.split(':')[0]+report+req.url}
             );
             res.end();
-            console.log(req.headers.host);
         });
         redirectServer.listen((config.server.http.port || 3000));
     }
