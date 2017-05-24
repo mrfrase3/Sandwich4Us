@@ -43,7 +43,7 @@ var initMap = function(){
     
     // handle events //
     
-    map.on('click', updatePos);
+    map.addListener('click', updatePos);
     
     $('button.getloc').click((e)=>{
         e.preventDefault();
