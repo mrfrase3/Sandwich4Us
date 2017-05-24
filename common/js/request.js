@@ -5,19 +5,26 @@
     let dp_soon = moment().add(2, 'h').minute(0);
     $(".c-datepicker-input").val( dp_soon.format("HH:mm DD/MM/YYYY") );
     
-    const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', (value) => {
+    const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', value => {
         if(value.toDate() < Date.now()) value = moment().add(2, 'h').minute(0);
         $(".c-datepicker-input").val( value.format("HH:mm DD/MM/YYYY") );
     });
     
-    $(".c-datepicker-input").click( () => picker.open());
+    $(".c-datepicker-input").focus( e => {
+        e.preventDefault();
+        picker.open();
+    });
     
 }
 
-var getLoc = {lat: -26.0906899, lng: 128.1506632};
+var getLoc;
 var initMap = function(){
     
     // setup objects //
+    let geocoder = new google.maps.Geocoder();
+    let autocomplete = new google.maps.places.Autocomplete(document.getElementById('req-loc'))
+    
+    getLoc = new google.maps.LatLng( -26.0906899, 128.1506632);
     
     let map = new google.maps.Map(document.getElementById('req_getLocMap'), {
       center: getLoc,
@@ -32,7 +39,7 @@ var initMap = function(){
     let circle = new google.maps.Circle({
         map,
         center: getLoc,
-        radius: (Number($('input#req-dist').val()) || 5) * 1000,
+        radius: (Number($('input#req-dist').val()) || 2) * 1000,
         fillColor: "#004445",
         fillOpacity: 0.5,
         strokeWeight: 0
@@ -53,19 +60,39 @@ var initMap = function(){
     
     map.addListener('click', updatePos);
     
-    $('button.getloc').click((e)=>{
+    $('button.getloc').click( e => {
         e.preventDefault();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-                updatePos({latLng: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)});
-                map.setZoom(14);
+                let geoloc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                geocoder.geocode( { location: geoloc}, (results, status) => {
+                    if (status == 'OK') {
+                        updatePos({latLng: results[0].geometry.location});
+                        $('input#req-loc').val(results[0].formatted_address);
+                    } else {
+                        updatePos({latLng: geoloc});
+                    }
+                    map.setZoom(14);
+                }
             }, ()=> {
                 geoErr(true);
             });
         } else geoErr(false);
     });
     
-    $('input#req-dist').change(()=>{
-        circle.setRadius((Number($('input#req-dist').val()) || 5) * 1000);
+    $('input#req-dist').change( () => {
+        circle.setRadius((Number($('input#req-dist').val()) || 2) * 1000);
+    });
+    
+    $('input#req-loc').change( e => {
+        geocoder.geocode( { location: geoloc}, (results, status) => {
+            if (status == 'OK') {
+                updatePos({latLng: results[0].geometry.location});
+                //$('input#req-loc').val(results[0].formatted_address);
+            } else {
+                alert('Adress lookup failed. ' + status);
+            }
+            map.setZoom(14);
+        }
     });
 };
