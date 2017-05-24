@@ -1,7 +1,7 @@
 
 /*import MaterialDateTimePicker from 'material-datetime-picker';*/
 
-const picker = new MaterialDateTimePicker().on('submit', (value) => {
+const picker = new MaterialDatetimePicker().on('submit', (value) => {
     $(".c-datepicker-input").val( value.format("HH:mm DD/MM/YYYY") );
 });
 
