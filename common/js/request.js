@@ -26,10 +26,18 @@
         setTimeout(()=>{
             $('.req-have-table tbody tr, .req-want-table tbody tr').remove();
             $('.req-ing-table input[name="req-want"]:checked').each(function(){
-                $('.req-want-table tbody').append('<tr><td>'+$(this).attr('value')+'</td></tr>');
+                $('.req-want-table tbody').append('<tr><td class="capname">'+$(this).attr('value')+'</td></tr>');
             });
             $('.req-ing-table input[name="req-have"]:checked').each(function(){
-                $('.req-have-table tbody').append('<tr><td>'+$(this).attr('value')+'</td></tr>');
+                $('.req-have-table tbody').append('<tr><td class="capname">'+$(this).attr('value')+'</td></tr>');
+            });
+            $('.req-have-table tbody tr td').click(function(){
+                $('input[name="req-have"][value="'+$(this).text()+'"]').prop('checked', false);
+                $(this).remove();
+            });
+            $('.req-want-table tbody tr td').click(function(){
+                $('input[name="req-want"][value="'+$(this).text()+'"]').prop('checked', false);
+                $(this).remove();
             });
         }, 50);
     });

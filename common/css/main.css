@@ -32,6 +32,7 @@ div#req_getLocMap {
 .req-ing-table {
     overflow-y: auto;
     height: 50vh;
+    position: relative;
 }
 
 .req-want-table tbody,
@@ -61,4 +62,28 @@ div#req_getLocMap {
 .req-ing-table span.name {
     font-weigth: bold;
     font-size: 1.1em;
+}
+
+.req-want-table tr td,
+.req-have-table tr td{
+    position: relative;
+}
+
+.req-want-table tr td:hover::after,
+.req-have-table tr td:hover::after{
+    position: absolute;
+    /* display: block; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #e44234;
+    color: white;
+    /* vertical-align: middle; */
+    /* line-height: normal; */
+    font-size: 1.5em;
+    font-weight: bold;
+    content: 'x';
+    cursor: pointer;
 }
