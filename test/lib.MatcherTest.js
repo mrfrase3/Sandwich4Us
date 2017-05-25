@@ -113,7 +113,7 @@ describe("Matcher-unitTest", function(){
                     assert.ok(requests[1], "request was not made 1");
                     var fsock1 = new FakeSocket();
                     requests[0].addSocket(fsock1);
-                    fsock1.once('matches.get', (matches)=>{
+                    fsock1.once('matches.list', (matches)=>{
                         if(matches.length !== 1) return reject("invalid number of matches returned");
                         if(matches[0].id !== requests[1].id) return reject("invalid match returned");
                         console.log("match: " + JSON.stringify(matches[0]));
