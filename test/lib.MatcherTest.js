@@ -112,9 +112,8 @@ describe("Matcher-unitTest", function(){
                     assert.ok(requests[0], "request was not made 0");
                     assert.ok(requests[1], "request was not made 1");
                     var fsock1 = new FakeSocket();
-                    Matcher.addSocket(fsock1);
+                    Matcher.addSocket(mike.id, fsock1);
                     fsock1.once('matches.list', (matches)=>{
-                        console.log("test4");
                         if(matches.length !== 1) return reject("invalid number of matches returned");
                         if(matches[0].id !== requests[1].id) return reject("invalid match returned");
                         console.log("match: " + JSON.stringify(matches[0]));
@@ -126,7 +125,6 @@ describe("Matcher-unitTest", function(){
                         requests[1].save();
                         resolve();
                     });
-                    console.log("test1");
                     fsock1.emit('matches.get');
                 });
             });
