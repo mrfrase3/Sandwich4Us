@@ -114,7 +114,7 @@ describe("Matcher-unitTest", function(){
                     var fsock1 = new FakeSocket();
                     Matcher.addSocket(mike.id, fsock1);
                     fsock1.once('matches.list', (matches)=>{
-                        if(matches.length !== 1) return reject("invalid number of matches returned");
+                        if(matches.length !== 1) return reject("invalid number of matches returned " + matches.length);
                         if(matches[0].id !== requests[1].id) return reject("invalid match returned");
                         console.log("match: " + JSON.stringify(matches[0]));
                         requests[0].expires = new Date(Date.now() +20);
