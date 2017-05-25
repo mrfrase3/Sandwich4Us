@@ -34,17 +34,17 @@ describe("Matcher-unitTest", function(){
         before(function(){
             return new Promise((resolve, reject) => {
                 Users.register("Mike", "Jones", "mike.jones@example.com", "I<3CatsNotDogs")
-                .catch(reject).then((user)=>{
+                .catch(reject).catch(reject).then((user)=>{
                     mike = user;
                     user.validated = true;
                     user.save().then(()=>{
-                        Users.register("Mike2", "Jones", "mike2.jones@example.com", "I<3CatsNotDogs")
-                        .catch(reject).then((user)=>{
-                            mike2 = user;
-                            user.validated = true;
-                            user.save().then(resolve).catch(reject);
+                        Users.register("OtherMike", "Jones", "mike2.jones@example.com", "I<3CatsNotDogs")
+                        .catch(reject).catch(reject).then((user2)=>{
+                            mike2 = user2;
+                            user2.validated = true;
+                            user2.save().then(resolve).catch(reject).catch(reject);
                         });
-                    }).catch(reject);
+                    }).catch(reject).catch(reject);
                 });
                 
             });
