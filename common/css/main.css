@@ -108,6 +108,26 @@ div#req_getLocMap {
     display: table-cell;
 }
 
+.req-loc-center {
+    padding-right: 3em;
+    position: relative;
+}
+
+.req-loc-center input#req-loc {
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0;
+    border-bottom: 0;
+}
+
+.req-loc-center .getloc {
+    position: absolute;
+    right: 0;
+    top: 0.25em;
+    height: 2.5em;
+    border-radius: 0;
+}
+
 @media (min-width: 64em) {
     .req-ing-table td,
     .req-ing-table th,
