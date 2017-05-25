@@ -1,0 +1,140 @@
+input#req-loc,
+input#req-ing-search{
+    display: inline-block;
+    font-weight: normal;
+}
+
+input.c-datepicker-input {
+    cursor: pointer;
+}
+
+div#req_getLocMap {
+    width: 100%;
+    height: 40vh;
+}
+
+.req-ing-wrap {
+    width: 100%;
+    text-align: center;
+}
+
+.req-ing-wrap div,
+.req-ing-wrap table {
+    display: inline-block;
+}
+
+.req-want-table,
+.req-have-table,
+.req-ing-table {
+    overflow-y: auto;
+    height: 50vh;
+    position: relative;
+}
+
+.req-want-table tbody,
+.req-have-table tbody,
+.req-ing-table tbody {
+    text-align: left;
+}
+
+.req-ing-table input[name="req-want"],
+.req-ing-table input[name="req-have"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.req-ing-table input[name="req-want"]:checked ~ label,
+.req-ing-table input[name="req-have"]:checked ~ label {
+    background-color: #004445;
+    color: white;
+}
+
+.req-ing-table span.tags {
+    font-size: 0.75em;
+    color: grey;
+}
+
+.req-ing-table span.name {
+    font-weigth: bold;
+    font-size: 1.1em;
+}
+
+.req-want-table tr td,
+.req-have-table tr td{
+    position: relative;
+}
+
+.req-want-table tr td:hover,
+.req-have-table tr td:hover{
+    background-color: #e44234;
+}
+
+.req-want-table tr td:hover::after,
+.req-have-table tr td:hover::after{
+    position: absolute;
+    top: 0.2em;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    text-align: center;
+    background-color: #e44234;
+    color: white;
+    font-size: 1.5em;
+    content: '\E92B';
+    cursor: pointer;
+    font-family: 'Material Icons';
+}
+
+.req-ing-table td {
+    width: 30%;
+    display: inline-block;
+}
+
+.req-ing-table td:first-child {
+    width: 100%;
+    border-bottom: 0;
+}
+
+.req-ing-table th {
+    display: none;
+}
+
+.req-ing-table th:first-child {
+    display: table-cell;
+}
+
+.req-loc-center {
+    padding-right: 3em;
+    position: relative;
+}
+
+.req-loc-center input#req-loc {
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0;
+    border-bottom: 0;
+}
+
+.req-loc-center .getloc {
+    position: absolute;
+    right: 0;
+    top: 0.25em;
+    height: 2.5em;
+    border-radius: 0;
+}
+
+.c-datepicker-input {
+    background-color: initial;
+}
+
+@media (min-width: 64em) {
+    .req-ing-table td,
+    .req-ing-table th,
+    .req-ing-table td:first-child,
+    .req-ing-table th:first-child{
+        display: table-cell;
+        width: auto;
+        border-bottom: 1px solid #cbcbcb;
+    }
+}
