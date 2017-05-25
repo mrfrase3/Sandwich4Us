@@ -1,8 +1,9 @@
 const assert = require("assert");
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+class FakeSocket extends require('events') {}
 var Users, Matcher;
-var mike;
+var mike, mike2;
 var mike_req;
 
 var config = require("../config.json");
@@ -36,8 +37,16 @@ describe("Matcher-unitTest", function(){
                 .catch(reject).then((user)=>{
                     mike = user;
                     user.validated = true;
-                    user.save().then(resolve).catch(reject);
+                    user.save().then(()=>{
+                        Users.register("Mike2", "Jones", "mike2.jones@example.com", "I<3CatsNotDogs")
+                        .catch(reject).then((user)=>{
+                            mike2 = user;
+                            user.validated = true;
+                            user.save().then(resolve).catch(reject);
+                        });
+                    }).catch(reject);
                 });
+                
             });
         });
         
@@ -49,7 +58,7 @@ describe("Matcher-unitTest", function(){
             return new Promise((resolve, reject) => {
                 Matcher.newRequest(
                     mike.id, mike.firstname, 2, 2,
-                    Date.now()+60*1000, 128.1506632, -26.0906899,
+                    Date.now()+60*1000, 115.817786, -31.978968,
                     ["white bread", "tomato sauce"], ["hot salami"]
                 ).catch(reject).catch(reject).then((request)=>{
                     assert.ok(request, "request was not made");
@@ -83,6 +92,40 @@ describe("Matcher-unitTest", function(){
                             }, 40);
                         });
                     });
+                });
+            });
+        });
+        
+        it("can match requests a request with valid credentials", function(){
+            return new Promise((resolve, reject) => {
+                Promise.all([
+                    Matcher.newRequest(
+                        mike.id, mike.firstname, 2, 2,
+                        Date.now()+60*1000, 115.817786, -31.978968,
+                        ["hotdog bun", "hot salami"], ["tomato sauce"]
+                    ),
+                    Matcher.newRequest(
+                        mike2.id, mike2.firstname, 2, 2,
+                        Date.now()+60*1000, 115.8160915, -31.9776193,
+                        ["white bread", "tomato sauce"], ["hot salami", "vintage cheese"]
+                    )]).catch(reject).catch(reject).then((requests)=>{
+                    assert.ok(requests[0], "request was not made 0");
+                    assert.ok(requests[1], "request was not made 1");
+                    var fsock1 = new FakeSocket();
+                    requests[0].addSocket(fsock1);
+                    fsock1.once('matches.get', (matches)=>{
+                        if(matches.length !== 1) return reject("invalid number of matches returned");
+                        if(matches[0].id !== requests[1].id) return reject("invalid match returned");
+                        console.log("match: " + JSON.stringify(matches[0]));
+                        requests[0].expires = new Date(Date.now() +20);
+                        requests[0].markModified('expires');
+                        requests[0].save();
+                        requests[1].expires = new Date(Date.now() +20);
+                        requests[1].markModified('expires');
+                        requests[1].save();
+                        resolve();
+                    });
+                    fsock1.emit('matches.get');
                 });
             });
         });
