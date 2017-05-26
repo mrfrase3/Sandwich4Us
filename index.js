@@ -9,6 +9,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const users = require('./lib/Users.js')(mongoose);
+const Matcher = require('./lib/Matcher.js')(mongoose);
 var app = express();
 var server;
 var redirectServer;
@@ -79,13 +80,68 @@ app.use("/common", express.static( __dirname + "/common" ));
 
 // Express routing
 
-app.get('/', (req, res)=>{
-    var fill = {isPageIndex: true, user: req.session.user};
+app.get('/', (req, res, next)=>{
+    var fill = {isPageIndex: true};
 	if(!req.session.user) return res.render('register', fill);
-	fill.isPageRequest = true;
-	fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
-	fill.ingredients = require('./lib/ingredients.json');
-	res.render('request', fill);
+	next();
+});
+
+app.get('/', (req, res, next)=>{
+    var fill = {isPageIndex: true, user: req.session.user};
+    Matcher.getRequestByOwner(req.session.user.id).catch(console.error).then(match_req =>{
+        if(!match_req) return next();
+        fill.isPageMatches = true;
+        fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
+        res.render('matches', fill);
+    });
+});
+
+var send_req_page = (req, res, fill) => {
+    if(!fill) fill = {user: req.session.user};
+    if(!req.session.user) return res.redirect(301, '/');
+    Matcher.getRequestByOwner(req.session.user.id).catch(console.error).then(match_req =>{
+        if(!match_req) match_req = {expires: new Date(0), loc: [0, 0]};
+        fill.isPageRequest = true;
+        fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
+        fill.req_num = match_req.num_sandwiches || req.body.req_num;
+        fill.req_dist = match_req.dist || req.body.req_dist;
+        fill.req_end = match_req.expires.valueOf() || req.body.req_end;
+        fill.req_long = match_req.loc[0] || req.body.req_long;
+        fill.req_lat = match_req.loc[1] || req.body.req_lat;
+        Matcher.getIngredients(req.session.user.id, req.body.want, req.body.have)
+        .catch(console.error).then(ings => {
+            fill.ingredients = ings;
+            res.render('request', fill);
+        });
+    });
+};
+
+
+app.get('/', (req, res)=>{
+    send_req_page(req, res, {isPageIndex: true, user: req.session.user});
+});
+
+app.get('/request', (req, res, next)=>{
+    send_req_page(req, res);
+});
+
+app.post('/request', (req, res, next)=>{
+    if(!req.session.user) return res.redirect(301, '/');
+    Matcher.newRequest(
+        req.session.user.id,
+        req.session.user.firstname,
+        req.body.req_num,
+        req.body.req_dist,
+        req.body.req_end,
+        req.body.req_long,
+        req.body.req_lat,
+        req.body.req_want,
+        req.body.req_have
+    ).catch(err => {
+        send_req_page(req, res, {user: req.session.user, formMessages: err});
+    }).then(match_req => {
+        res.redirect(301, '/');
+    });
 });
 
 app.get('/register', (req, res)=>{

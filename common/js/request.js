@@ -2,7 +2,8 @@
 /*import MaterialDateTimePicker from 'material-datetime-picker';*/
 {
 
-    let dp_soon = moment().add(2, 'h').minute(0);
+    let dp_soon = moment($('.c-datepicker-input').val());
+    if(!dp_soon._isValid) dp_soon = moment().add(2, 'h').minute(0);
     $('.c-datepicker-input').val( dp_soon.format('HH:mm YYYY/MM/DD') );
     
     const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', value => {
@@ -15,28 +16,28 @@
         picker.open();
     });
     
-    $('.req-ing-table input[name="req-want"], .req-ing-table input[name="req-have"]').change(function(e){
+    $('.req-ing-table input[name="req_want"], .req-ing-table input[name="req_have"]').change(function(e){
         
         if($(this).attr('name') === 'req-want'){ //set the other to false
-            $('input[name="req-have"][value="'+$(this).attr('value')+'"]').prop('checked', false);
+            $('input[name="req_have"][value="'+$(this).attr('value')+'"]').prop('checked', false);
         } else {
-            $('input[name="req-want"][value="'+$(this).attr('value')+'"]').prop('checked', false);
+            $('input[name="req_want"][value="'+$(this).attr('value')+'"]').prop('checked', false);
         }
         
         setTimeout(()=>{
             $('.req-have-table tbody tr, .req-want-table tbody tr').remove();
-            $('.req-ing-table input[name="req-want"]:checked').each(function(){
+            $('.req-ing-table input[name="req_want"]:checked').each(function(){
                 $('.req-want-table tbody').append('<tr><td class="capname">'+$(this).attr('value')+'</td></tr>');
             });
-            $('.req-ing-table input[name="req-have"]:checked').each(function(){
+            $('.req-ing-table input[name="req_have"]:checked').each(function(){
                 $('.req-have-table tbody').append('<tr><td class="capname">'+$(this).attr('value')+'</td></tr>');
             });
             $('.req-have-table tbody tr td').click(function(){
-                $('input[name="req-have"][value="'+$(this).text()+'"]').prop('checked', false);
+                $('input[name="req_have"][value="'+$(this).text()+'"]').prop('checked', false);
                 $(this).remove();
             });
             $('.req-want-table tbody tr td').click(function(){
-                $('input[name="req-want"][value="'+$(this).text()+'"]').prop('checked', false);
+                $('input[name="req_want"][value="'+$(this).text()+'"]').prop('checked', false);
                 $(this).remove();
             });
         }, 50);
@@ -84,7 +85,7 @@ var initMap = function(){
     
     // setup helper functions //
     
-    let updatePos = (e, dontName)=>{
+    let updatePos = (e, dontName = false)=>{
         if(dontName){
             getLoc = e.latLng;
             marker.setPosition(getLoc);
@@ -142,4 +143,16 @@ var initMap = function(){
             });
         }, 100);
     });
+    
+    // load passed lat-long if passed
+    if(
+        $('input#req-lat').val() !== "" &&
+        !isNaN(Number($('input#req-lat').val())) &&
+        $('input#req-long').val() !== "" &&
+        !isNaN(Number($('input#req-long').val()))
+    ){
+        updatePos({
+            latLng: new google.maps.LatLng(Number($('input#req-lat').val()), Number($('input#req-long').val()))
+        });
+    }
 };
