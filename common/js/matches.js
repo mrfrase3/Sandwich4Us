@@ -50,7 +50,32 @@ var get_matches;
                 }
             });
         });
+        $('.star-score').each(function(){
+            let score = Number($(this).attr('data-score')) || 0;
+            let stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
+            if(score > 0.05) stars[0] = 'star half';
+            if(score > 0.15) stars[0] = 'star';
+            if(score > 0.25) stars[1] = 'star half';
+            if(score > 0.35) stars[1] = 'star';
+            if(score > 0.45) stars[2] = 'star half';
+            if(score > 0.55) stars[2] = 'star';
+            if(score > 0.65) stars[3] = 'star half';
+            if(score > 0.75) stars[3] = 'star';
+            if(score > 0.85) stars[4] = 'star half';
+            if(score >= 0.95) stars[4] = 'star';
+            $(this).text(
+                '<i class="material-icons">'+
+                starts.join('</i><i class="material-icons">')+
+                '</i>'    
+            );
+        });
     });
+    
+    setInterval(() => {
+        $('.get-time-left').each(function(){
+            $(this).text(moment($(this).attr('data-time')).toNow());
+        });
+    }, 500);
 }
 
 

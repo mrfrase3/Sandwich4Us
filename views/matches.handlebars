@@ -9,7 +9,7 @@
                 Location: <span class="get-loc-name" data-lat="{{req.loc.[1]}}" data-long="{{req.loc.[0]}}"></span><br>
                 Number of Sandwiches: {{req.num_sandwiches}}<br>
                 Distance: {{req.dist}} km<br>
-                Time Left: <span class="get-time-left" data-time="req.expires"></span>
+                Expires <span class="get-time-left" data-time="req.expires"></span>
             </p>
             <a href="/request" class="pure-button">Change Request</a>
         </div>
@@ -20,12 +20,15 @@
         <script id="match-template" type="text/x-handlebars-template">
             \{{#each this}}
                 <li>
+                    <div class="right-opts">
+                        <button class="pure-button">Message</button>
+                        <span class="star-score" data-score="\{{score}}"></span>
+                    </div>
                     <h3>\{{name}}</h3>
                     <p>
                         Location: <span class="get-loc-name" data-lat="\{{loc.[1]}}" data-long="\{{loc.[0]}}"></span><br>
                         Number of Sandwiches: \{{num_sandwiches}}<br>
                         Distance: \{{distance}} km<br>
-                        Score: \{{score}} km<br>
                         Time Left: <span class="get-time-left" data-time="\{{expires}}"></span>
                     </p>
                 </li>
