@@ -8,7 +8,8 @@ const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-const users = require('./lib/Users.js')(mongoose);
+mongoose.Promise = global.Promise;
+const Users = require('./lib/Users.js')(mongoose);
 const Matcher = require('./lib/Matcher.js')(mongoose);
 var app = express();
 var server;
@@ -177,7 +178,7 @@ app.post('/register', (req, res)=>{
         return res.render('register', fill);
     }
     
-    users.register(req.body.reg_firstname, req.body.reg_lastname,
+    Users.register(req.body.reg_firstname, req.body.reg_lastname,
     req.body.reg_email, req.body.reg_password).then(user=>{
         req.session.user = {
             firstname: user.firstname,
@@ -216,7 +217,7 @@ app.post('/login', (req, res)=>{
         return res.render('login', fill);
     }
     
-    users.login(req.body.login_email, req.body.login_password).then(user=>{
+    Users.login(req.body.login_email, req.body.login_password).then(user=>{
         req.session.user = {
             firstname: user.firstname,
             lastname: user.lastname,
@@ -246,6 +247,43 @@ app.get('/references', (req, res)=>{
 app.get('/about', (req, res)=>{
     var fill = {isPageAbout: true, user: req.session.user};
     res.render('about', fill);
+});
+
+app.get('/sockauth', (req, res) => {
+    if(!req.session.user) return res.json({success: false, login: false});
+    Users.genToken(req.session.user.id, 'sockauth', Date.now()+60*1000)
+    .catch( err => {
+        return res.json({success: false, login: true, err});
+    }).then(token => {
+        return res.json({success: true, token, id: req.session.id});
+    });
+});
+
+// Setup Sockets //
+
+io.on('connect', (socket) => {
+    
+    socket.on('sockauth.useToken', (data) => {
+        if(socket.user) return;
+        Users.useToken(data.id, 'sockauth', data.token).catch( err =>{
+            socket.emit('sockauth.error', err);  
+        }).then(success => {
+            if(!success) return socket.emit('sockauth.error', ["Token passed not valid, try refreshing the page."]);
+            Users.get(data.id).catch( err => socket.emit('sockauth.error', err)).then(user => {
+                socket.user = {
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                    email: user.email,
+                    id: user.id
+                };
+                Matcher.addSocket(user.id, socket);
+                socket.emit('sockauth.success');
+            });
+        });
+    });
+    
+    socket.emit('sockauth.init');
+    
 });
 
 
