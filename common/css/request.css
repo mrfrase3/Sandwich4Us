@@ -37,15 +37,15 @@ div#req_getLocMap {
     text-align: left;
 }
 
-.req-ing-table input[name="req-want"],
-.req-ing-table input[name="req-have"] {
+.req-ing-table input[name="req_want"],
+.req-ing-table input[name="req_have"] {
     position: absolute;
     opacity: 0;
     z-index: -1;
 }
 
-.req-ing-table input[name="req-want"]:checked ~ label,
-.req-ing-table input[name="req-have"]:checked ~ label {
+.req-ing-table input[name="req_want"]:checked ~ label,
+.req-ing-table input[name="req_have"]:checked ~ label {
     background-color: #004445;
     color: white;
 }

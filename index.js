@@ -248,14 +248,14 @@ app.get('/about', (req, res)=>{
 
 // Setup the exports //
 
-module.exports.start = ()=>{
+module.exports.start = () => {
     mongoose.connect(mongouri);
     server.listen(port);
     console.log("Server started on port: " + port);
     return port;
 }
 
-module.exports.stop = ()=>{
+module.exports.stop = () => {
     mongoose.disconnect();
     server.close();
     console.log("Server stopped");

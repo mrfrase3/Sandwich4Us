@@ -18,7 +18,7 @@
     
     $('.req-ing-table input[name="req_want"], .req-ing-table input[name="req_have"]').change(function(e){
         
-        if($(this).attr('name') === 'req-want'){ //set the other to false
+        if($(this).attr('name') === 'req_want'){ //set the other to false
             $('input[name="req_have"][value="'+$(this).attr('value')+'"]').prop('checked', false);
         } else {
             $('input[name="req_want"][value="'+$(this).attr('value')+'"]').prop('checked', false);
