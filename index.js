@@ -129,7 +129,6 @@ app.get('/request', (req, res, next)=>{
 app.post('/request', (req, res, next)=>{
     if(!req.session.user) return res.redirect(301, '/');
     var errored = false;
-    console.log(req.body);
     Matcher.newRequest(
         req.session.user.id,
         req.session.user.firstname,
