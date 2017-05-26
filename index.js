@@ -251,6 +251,22 @@ app.get('/about', (req, res)=>{
     res.render('about', fill);
 });
 
+app.get('/profile', (req, res)=>{
+    if(!req.session.user) return res.redirect(301, '/');
+    var fill = {isPageProfile: true, user: req.session.user};
+    let id = req.query.user || req.session.user.id;
+    Users.get(id).catch(console.error).then(prof => {
+        if(!prof) prof = req.session.user;
+        if(prof.id == req.session.user.id) fill.owner = true;
+        fill.firstname = prof.firstname;
+        fill.lastname = prof.lastname;
+        fill.email = prof.email;
+        if(prof.createdAt) fill.createdAt = prof.createdAt.getTime();
+        else fill.createdAt = 0;
+        res.render('about', fill);
+    });
+});
+
 app.get('/sockauth', (req, res) => {
     if(!req.session.user) return res.json({success: false, login: false});
     Users.genToken(req.session.user.id, 'sockauth', Date.now()+60*1000)

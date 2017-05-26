@@ -72,7 +72,7 @@ var get_matches;
             if(score > 0.85) stars[4] = 'star_half';
             if(score >= 0.95) stars[4] = 'star';
             $(this).html(
-                '<i class="material-icons">'+
+                'Match Quality: <i class="material-icons">'+
                 stars.join('</i><i class="material-icons">')+
                 '</i>'    
             );

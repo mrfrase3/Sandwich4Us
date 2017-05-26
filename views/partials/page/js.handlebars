@@ -3,6 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js" integrity="sha256-fiM0lX3OYzf0FfLBeLqFuCokh+rf1VhI/eanPbzldUM=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.min.js" integrity="sha256-ekbnNY56NMALfM+xMBTe2rJkzgVCnmvJUUsKazZQQT8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" integrity="sha256-0JaDbGZRXlzkFbV8Xi8ZhH/zZ6QQM0Y3dCkYZ7JYq34=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
 
 <!-- Custom Scripts -->
 {{#if user}}<script src="/common/js/socket.js"></script>{{/if}}
@@ -10,14 +11,12 @@
 <script src="/common/js/pure-menu.js"></script>
 <!--<script src="./common/js/{{@exphbs.view}}.js"></script>-->
 {{#if isPageRequest}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.standalone.js"></script>
     <script src="/common/js/material-datetime-picker.js" charset="utf-8"></script>
     <script src="/common/js/request.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{GoogleMapsAPIKey}}&callback=initMap&libraries=places"></script>
 {{/if}}
 {{#if isPageMatches}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
     <script src="/common/js/matches.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{GoogleMapsAPIKey}}&callback=initMap&libraries=places"></script>
 {{/if}}
