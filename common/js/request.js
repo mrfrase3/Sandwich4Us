@@ -52,7 +52,7 @@
         }
     });
     
-    $('form').submit(() => {
+    $('button[type="submit"]').click(() => {
         $('input#req-end').val(new Date($('input#req-end').val()).getTime());
     });
     
