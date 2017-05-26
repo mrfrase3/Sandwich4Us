@@ -107,7 +107,10 @@ var initMap = function(){
         }
     };
     
-    let geoErr = (hasGeo) => { alert("Could not get your location. " + hasGeo) };
+    let geoErr = (hasGeo) => { 
+        if(hasGeo) swal('Error', 'You must allow location permission.', 'error');
+        else swal('Error', 'Unfortunately your browser does not support getting your location, try using firefox or chrome.', 'error');
+    }
     
     // handle events //
     
