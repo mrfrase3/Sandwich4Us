@@ -255,7 +255,7 @@ app.get('/sockauth', (req, res) => {
     .catch( err => {
         return res.json({success: false, login: true, err});
     }).then(token => {
-        return res.json({success: true, token, id: req.session.id});
+        return res.json({success: true, token, id: req.session.user.id});
     });
 });
 
@@ -265,9 +265,12 @@ io.on('connect', (socket) => {
     
     socket.on('sockauth.useToken', (data) => {
         if(socket.user) return;
+        let errored = false;
         Users.useToken(data.id, 'sockauth', data.token).catch( err =>{
+            errored = true;
             socket.emit('sockauth.error', err);  
         }).then(success => {
+            if(errored) return;
             if(!success) return socket.emit('sockauth.error', ["Token passed not valid, try refreshing the page."]);
             Users.get(data.id).catch( err => socket.emit('sockauth.error', err)).then(user => {
                 socket.user = {
