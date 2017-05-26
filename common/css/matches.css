@@ -24,6 +24,10 @@ div#req_getLocMap {
     margin-right: 1em;
 }
 
+.match-list li .right-opts .star-score i{
+    vertical-align: middle;
+}
+
 .match-list li:last-child {
     border-bottom: 0;
 }

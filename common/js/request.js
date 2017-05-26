@@ -52,6 +52,10 @@
         }
     });
     
+    $('form').submit(() => {
+        $('input#req-end').val(new Date($('input#req-end').val()).getTime());
+    });
+    
 }
 
 

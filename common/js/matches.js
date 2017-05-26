@@ -35,7 +35,7 @@ var get_matches;
         markers = [];
         $('.get-loc-name').each(function(i){
             let label;
-            if(i) (i+9).toString(36).toUpperCase();
+            if(i) label = (i+9).toString(36).toUpperCase();
             let position = new google.maps.LatLng($(this).attr('data-lat'),$(this).attr('data-long'));
             markers.push(new google.maps.Marker({
                 map,
@@ -53,15 +53,15 @@ var get_matches;
         $('.star-score').each(function(){
             let score = Number($(this).attr('data-score')) || 0;
             let stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
-            if(score > 0.05) stars[0] = 'star half';
+            if(score > 0.05) stars[0] = 'star_half';
             if(score > 0.15) stars[0] = 'star';
-            if(score > 0.25) stars[1] = 'star half';
+            if(score > 0.25) stars[1] = 'star_half';
             if(score > 0.35) stars[1] = 'star';
-            if(score > 0.45) stars[2] = 'star half';
+            if(score > 0.45) stars[2] = 'star_half';
             if(score > 0.55) stars[2] = 'star';
-            if(score > 0.65) stars[3] = 'star half';
+            if(score > 0.65) stars[3] = 'star_half';
             if(score > 0.75) stars[3] = 'star';
-            if(score > 0.85) stars[4] = 'star half';
+            if(score > 0.85) stars[4] = 'star_half';
             if(score >= 0.95) stars[4] = 'star';
             $(this).html(
                 '<i class="material-icons">'+
