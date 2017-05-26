@@ -24,12 +24,12 @@
                         <button class="pure-button">Message</button>
                         <span class="star-score" data-score="\{{score}}"></span>
                     </div>
-                    <h3 class="capname">\{{firstname}}</h3>
+                    <h3 class="capname">\{{label}} - \{{firstname}}</h3>
                     <p>
                         Location: <span class="get-loc-name" data-lat="\{{loc.[1]}}" data-long="\{{loc.[0]}}"></span><br>
                         Number of Sandwiches: \{{num_sandwiches}}<br>
                         Distance: \{{distance}} km<br>
-                        Time Left: <span class="get-time-left" data-time="\{{expires}}"></span>
+                        Expires <span class="get-time-left" data-time="\{{expires}}"></span>
                     </p>
                 </li>
             \{{else}}

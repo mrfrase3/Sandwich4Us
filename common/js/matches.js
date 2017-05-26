@@ -26,6 +26,7 @@ var get_matches;
     socket.on('sockauth.success', get_matches);
     
     socket.on('matches.list', matches => {
+        for(let i in matches) matches[i].label = (i+10).toString(36).toUpperCase();
         $(".match-list li").remove();
         $(".match-list").html(match_template(matches));
         //do something about new matches
@@ -73,7 +74,7 @@ var get_matches;
     
     setInterval(() => {
         $('.get-time-left').each(function(){
-            $(this).text(moment($(this).attr('data-time')).toNow());
+            $(this).text(moment().to($(this).attr('data-time')));
         });
     }, 500);
 }
