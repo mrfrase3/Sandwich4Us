@@ -40,10 +40,10 @@ FE = Front End, BE = Back End, FS = Full Stack
  - [x] BE add https
  - [x] FE implement pure css
  - [x] FE implement jquery
- - [ ] FE add sweat alert
+ - [x] FE add sweat alert
  - [x] BE add handlebars
  - [x] BE add load in for mongo
- - [ ] FS add socket.io
+ - [x] FS add socket.io
  - [x] BE add Travis CI for unit testing
 
  - [x] FS implement login/users/tokens
@@ -53,24 +53,24 @@ FE = Front End, BE = Back End, FS = Full Stack
    - [x] BE implement sessions with mongo session store
    - [x] FS add socket login calls / socket auth?
 
- - [ ] FS implement match requests
-   - [ ] FE Redo match request form
-   - [ ] FE Make match browsing page
-   - [ ] BE Add request mongo collection
-   - [ ] FE get location of request
-   - [ ] FS add socket calls for linking FE to BE db
-   - [ ] BE generate formula to match requests
+ - [x] FS implement match requests
+   - [x] FE Redo match request form
+   - [x] FE Make match browsing page
+   - [x] BE Add request mongo collection
+   - [x] FE get location of request
+   - [x] FS add socket calls for linking FE to BE db
+   - [x] BE generate formula to match requests
 
  - [ ] FS implement match messaging
    - [ ] FE add instant messaging interface
    - [ ] BE implement messaging collection
    - [ ] FS add socket calls for linking FE to BE db
 
- - [ ] FS Add user personalisation
-   - [ ] FE Create profile page
-   - [ ] FE Add code to edit page if owner
-   - [ ] FS add socket calls for linking FE to BE db
-   - [ ] FE Add links to profile in the navbar, match browser and messenger
+ - [x] FS Add user personalisation
+   - [x] FE Create profile page
+   - [x] FE Add code to edit page if owner
+   - [x] FS add socket calls for linking FE to BE db
+   - [x] FE Add links to profile in the navbar, match browser and messenger
 
  - [ ] FE add notifications (add to existing socket event handlers)
  - [ ] email validation?
