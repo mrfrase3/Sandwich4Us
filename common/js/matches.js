@@ -86,10 +86,8 @@ var get_matches;
     }, 500);
     
     $('button.cancel').click(()=>{
-        $.post('/request', {req_end: Date.now()+100}, ()=>{
-            setTimeout(()=>{
-                window.location.reload(true);
-            }, 200);
+        $.post('/request', {req_end: Date.now()-2*60*1000}, ()=>{
+            window.location.reload(true);
         });
     });
 }

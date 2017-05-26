@@ -2,7 +2,7 @@
 /*import MaterialDateTimePicker from 'material-datetime-picker';*/
 {
 
-    let dp_soon = moment($('.c-datepicker-input').val());
+    let dp_soon = moment(Number($('.c-datepicker-input').val()));
     if(!dp_soon._isValid) dp_soon = moment().add(2, 'h').minute(0);
     $('.c-datepicker-input').val( dp_soon.format('HH:mm YYYY/MM/DD') );
     
