@@ -14,12 +14,12 @@
                 {{/each}}
                 
                 <label for="prof_firstname">First Name:</label>
-                <input id="prof_firstname" name="prof_firstname" type="text" required 
+                <input id="prof_firstname" name="prof_firstname" type="text" 
                 maxlength="128" pattern="[\w][\w -]+" {{#unless owner}}readonly{{/unless}}
                 value="{{firstname}}" class="pure-input-3-4 capname"/>
                 
                 <label for="prof_lastname">Last Name:</label>
-                <input id="prof_lastname" name="prof_lastname" type="text" required 
+                <input id="prof_lastname" name="prof_lastname" type="text" 
                 maxlength="128" pattern="[\w][\w -]+" {{#unless owner}}readonly{{/unless}}
                 value="{{lastname}}" class="pure-input-3-4 capname"/>
                 
@@ -31,7 +31,7 @@
                 <legend>Contact</legend>
                 
                 <label for="prof_email">Email:</label>
-                <input id="prof_email" name="prof_email" type="email" required 
+                <input id="prof_email" name="prof_email" type="email" 
                 maxlength="128"
                 value="{{email}}" readonly class="pure-input-3-4"/>
                 
@@ -41,15 +41,15 @@
                 <legend>Change Password</legend>
                 
                 <label for="prof_oldpassword">Old Password:</label>
-                <input id="prof_oldpassword" name="prof_oldpassword" type="password" required 
+                <input id="prof_oldpassword" name="prof_oldpassword" type="password" 
                 maxlength="256" placeholder="ThisIsA100%StrongPassword" class="pure-input-3-4">
                 
                 <label for="prof_password">New Password:</label>
-                <input id="prof_password" name="prof_password" type="password" required 
+                <input id="prof_password" name="prof_password" type="password" 
                 maxlength="256" placeholder="ThisIsA300%StrongerPassword" class="pure-input-3-4">
                 
                 <label for="prof_password2">Confirm Password:</label>
-                <input id="prof_password2" name="prof_password2" type="password" required 
+                <input id="prof_password2" name="prof_password2" type="password" 
                 maxlength="256" placeholder="ThisIsA300%StrongerPassword" class="pure-input-3-4">
                 
             </fieldset>
