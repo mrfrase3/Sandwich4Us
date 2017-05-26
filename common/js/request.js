@@ -8,7 +8,8 @@
     $('.c-datepicker-input').val( dp_soon.format('HH:mm YYYY/MM/DD') );
     
     const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', value => {
-        if(value.toDate() < Date.now()) value = moment().add(2, 'h').minute(0);
+        console.log(value);
+        if(value.valueOf() < Date.now()) value = moment().add(2, 'h').minute(0);
         $('.c-datepicker-input').val( value.format('HH:mm YYYY/MM/DD') );
     });
     
