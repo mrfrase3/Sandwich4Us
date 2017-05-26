@@ -109,7 +109,7 @@ var send_req_page = (req, res, fill) => {
         fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
         fill.req_num = match_req.num_sandwiches || req.body.req_num;
         fill.req_dist = match_req.dist || req.body.req_dist;
-        fill.req_end = match_req.expires.valueOf() || req.body.req_end;
+        fill.req_end = req.body.req_end || match_req.expires.valueOf();
         fill.req_long = match_req.loc[0] || req.body.req_long;
         fill.req_lat = match_req.loc[1] || req.body.req_lat;
         Matcher.getIngredients(req.session.user.id, req.body.req_want, req.body.req_have)
