@@ -14,7 +14,10 @@ var socket = io('/');
         }, 'json').fail(()=>swal('Error', 'Failed querying backend, please try refreshing', 'error'));
     });
     
-    socket.on('sockauth.error', err => swal('Error', err[0], 'error'));
+    socket.on('sockauth.error', err => {
+        console.error(err);
+        swal('Error', err[0], 'error');
+    });
     
     socket.on('sockauth.success', () => console.log('socket connected and authorised'));
     
