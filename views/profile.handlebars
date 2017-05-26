@@ -12,6 +12,12 @@
                     </span>
                     <br>
                 {{/each}}
+                {{#if success}}
+                    <span class="pure-form-message" style="color:green;">
+                        Profile successfuly updated!
+                    </span>
+                    <br>
+                {{/if}}
                 
                 <label for="prof_firstname">First Name:</label>
                 <input id="prof_firstname" name="prof_firstname" type="text" 

@@ -274,11 +274,7 @@ app.get('/profile', (req, res)=>{
 app.post('/profile', (req, res)=>{
     if(!req.session.user) return res.redirect(301, '/');
     var fill = {isPageProfile: true, user: req.session.user};
-    let id = req.query.user || req.session.user.id;
-    if(id !== req.session.user.id ){
-        fill.formMessages = ["You can only change your own profile."];
-        return send_prof_page(req, res, fill);
-    }
+    let id = req.session.user.id;
     Users.get(id).catch(console.error).then(prof => {
         if(!prof){
             fill.formMessages = ["You don't exist..."];
@@ -293,6 +289,8 @@ app.post('/profile', (req, res)=>{
             return send_prof_page(req, res, fill);
         }
         prof.save().catch(console.err).then( () => {
+            req.session.user.firstname = prof.firstname;
+            req.session.user.lastname = prof.lastname;
             if(req.body.prof_password && req.body.prof_password2 && req.body.prof_oldpassword){
                 if(req.body.prof_password !== req.body.prof_password2){
                     fill.formMessages = ["Passwords do not match"];
@@ -304,9 +302,11 @@ app.post('/profile', (req, res)=>{
                     return send_prof_page(req, res, fill);
                 }).then( () => {
                     if(fill.formMessages) return;
+                    fill.success = true;
                     send_prof_page(req, res, fill);
                 });
             } else {
+                fill.success = true;
                 send_prof_page(req, res, fill);
             }
         });
