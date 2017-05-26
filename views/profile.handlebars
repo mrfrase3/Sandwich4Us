@@ -16,12 +16,12 @@
                 <label for="prof_firstname">First Name:</label>
                 <input id="prof_firstname" name="prof_firstname" type="text" required 
                 maxlength="128" pattern="[\w][\w -]+" {{#unless owner}}readonly{{/unless}}
-                value="{{firstname}}" class="pure-input-3-4"/>
+                value="{{firstname}}" class="pure-input-3-4 capname"/>
                 
                 <label for="prof_lastname">Last Name:</label>
                 <input id="prof_lastname" name="prof_lastname" type="text" required 
                 maxlength="128" pattern="[\w][\w -]+" {{#unless owner}}readonly{{/unless}}
-                value="{{lastname}}" class="pure-input-3-4"/>
+                value="{{lastname}}" class="pure-input-3-4 capname"/>
                 
                 <label for="prof_createdAt">First Joined:</label>
                 <input  id="prof_createdAt" readonly value="{{createdAt}}" class="stamp-to-time pure-input-3-4"/>
@@ -53,10 +53,11 @@
                 maxlength="256" placeholder="ThisIsA300%StrongerPassword" class="pure-input-3-4">
                 
             </fieldset>
-            {{/if}}
             <fieldset>
                 <button type="submit" class="pure-button pure-button-primary">Save</button>
             </fieldset>
+            {{/if}}
+            
         </form>
     </div>
 </section>

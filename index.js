@@ -80,7 +80,7 @@ app.set('view engine', 'handlebars');
 
 app.use("/common", express.static( __dirname + "/common" ));
 
-// Express routing
+// Express routing //
 
 app.get('/', (req, res, next)=>{
     var fill = {isPageIndex: true};
@@ -251,9 +251,7 @@ app.get('/about', (req, res)=>{
     res.render('about', fill);
 });
 
-app.get('/profile', (req, res)=>{
-    if(!req.session.user) return res.redirect(301, '/');
-    var fill = {isPageProfile: true, user: req.session.user};
+var send_prof_page = (req, res, fill) => {
     let id = req.query.user || req.session.user.id;
     Users.get(id).catch(console.error).then(prof => {
         if(!prof) prof = req.session.user;
@@ -264,6 +262,54 @@ app.get('/profile', (req, res)=>{
         if(prof.createdAt) fill.createdAt = prof.createdAt.getTime();
         else fill.createdAt = 0;
         res.render('profile', fill);
+    });
+}
+
+app.get('/profile', (req, res)=>{
+    if(!req.session.user) return res.redirect(301, '/');
+    var fill = {isPageProfile: true, user: req.session.user};
+    send_prof_page(req, res, fill);
+});
+
+app.post('/profile', (req, res)=>{
+    if(!req.session.user) return res.redirect(301, '/');
+    var fill = {isPageProfile: true, user: req.session.user};
+    let id = req.query.user || req.session.user.id;
+    if(id !== req.session.user.id ){
+        fill.formMessages = ["You can only change your own profile."];
+        return send_prof_page(req, res, fill);
+    }
+    Users.get(id).catch(console.error).then(prof => {
+        if(!prof){
+            fill.formMessages = ["You don't exist..."];
+            return send_prof_page(req, res, fill);
+        }
+        prof.firstname = req.body.prof_firstname || prof.firstname;
+        prof.lastname = req.body.prof_lastname || prof.lastname;
+        let valerr = prof.validateSync();
+        if(valerr){
+            fill.formMessages = [];
+            for(var i in valerr.errors) fill.formMessages.push(valerr.errors[i].message);
+            return send_prof_page(req, res, fill);
+        }
+        prof.save().catch(console.err).then( () => {
+            if(req.body.prof_password && req.body.prof_password2 && req.body.prof_oldpassword){
+                if(req.body.prof_password !== req.body.prof_password2){
+                    fill.formMessages = ["Passwords do not match"];
+                    return send_prof_page(req, res, fill);
+                }
+                Users.changePassword(id, req.body.prof_password, req.body.prof_oldpassword)
+                .catch(err => {
+                    fill.formMessages = err;
+                    return send_prof_page(req, res, fill);
+                }).then( () => {
+                    if(fill.formMessages) return;
+                    send_prof_page(req, res, fill);
+                });
+            } else {
+                send_prof_page(req, res, fill);
+            }
+        });
     });
 });
 
