@@ -3,6 +3,7 @@
 {
 
     let dp_soon = moment(Number($('.c-datepicker-input').val()));
+    console.log(dp_soon);
     if(!dp_soon._isValid) dp_soon = moment().add(2, 'h').minute(0);
     $('.c-datepicker-input').val( dp_soon.format('HH:mm YYYY/MM/DD') );
     
