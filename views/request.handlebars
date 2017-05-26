@@ -82,7 +82,7 @@
                         </thead>
                         <tbody>
                             {{#each ingredients}}
-                                {{#if want}}<tr><td>{{name}}</td></tr>{{/if}}
+                                {{#if want}}<tr><td class="capname">{{name}}</td></tr>{{/if}}
                             {{/each}}
                         </tbody>
                     </table>
@@ -92,10 +92,10 @@
                                 <th>I Have:</th>
                             </tr>
                         </thead>
-                            {{#each ingredients}}
-                                {{#if have}}<tr><td>{{name}}</td></tr>{{/if}}
-                            {{/each}}
                         <tbody>
+                            {{#each ingredients}}
+                                {{#if have}}<tr><td class="capname">{{name}}</td></tr>{{/if}}
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
