@@ -23,6 +23,7 @@ var get_matches;
         }
         //get the list of matches
         socket.emit('matches.get');
+        setInterval(()=>socket.emit('matches.get'), 5000);
     }
     
     socket.on('sockauth.success', get_matches);
