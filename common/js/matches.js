@@ -8,7 +8,8 @@ var get_matches;
     var map;
     var markers = [];
     var match_template = Handlebars.compile($("#match-template").html());
-    get_matches = () => {
+    
+    get_matches = () => {// only start when both the socket and map is ready
         if(++counter < 2) return;
         if(counter === 2){
             geocoder = new google.maps.Geocoder();
@@ -20,20 +21,25 @@ var get_matches;
                 zoom: 13
             });
         }
+        //get the list of matches
         socket.emit('matches.get');
     }
     
     socket.on('sockauth.success', get_matches);
     
     socket.on('matches.list', matches => {
-        for(let i in matches) matches[i].label = (i+10).toString(36).toUpperCase();
+        // add labels
+        for(let i in matches) matches[i].label = (Number(i)+10).toString(36).toUpperCase();
+        // set the html list
         $(".match-list li").remove();
         $(".match-list").html(match_template(matches));
         //do something about new matches
         
         old_matches = matches;
+        //delete the old markers
         for(let i in markers) markers[i].setMap(null);
         markers = [];
+        // get the street addresses of the locs and place their markers
         $('.get-loc-name').each(function(i){
             let label;
             if(i) label = (i+9).toString(36).toUpperCase();
@@ -51,6 +57,7 @@ var get_matches;
                 }
             });
         });
+        // set the star ratings from the scores
         $('.star-score').each(function(){
             let score = Number($(this).attr('data-score')) || 0;
             let stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
@@ -72,11 +79,19 @@ var get_matches;
         });
     });
     
-    setInterval(() => {
+    setInterval(() => { // display the times in a counting down fasion
         $('.get-time-left').each(function(){
-            $(this).text(moment().to($(this).attr('data-time')));
+            $(this).text( moment().to( Number( $(this).attr('data-time') ) ) );
         });
     }, 500);
+    
+    $('button.cancel').click(()=>{
+        $.post('/request', {req_end: Date.now()+100}, ()=>{
+            setTimeout(()=>{
+                window.location.reload(true);
+            }, 200);
+        });
+    });
 }
 
 

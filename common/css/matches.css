@@ -14,20 +14,28 @@ div#req_getLocMap {
     position: relative;
 }
 
-.match-list li .right-opts{
+.right-opts{
     position: absolute;
     top: 0.5em;
     right: 0;
 }
 
-.match-list li .right-opts button{
+.right-opts .pure-button{
     margin-right: 1em;
 }
 
-.match-list li .right-opts .star-score i{
+.right-opts .star-score i{
     vertical-align: middle;
 }
 
 .match-list li:last-child {
     border-bottom: 0;
+}
+
+.want-have-list::after {
+    content: ', ';
+}
+
+.want-have-list:last-child::after {
+    content: '';
 }
