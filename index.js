@@ -263,7 +263,7 @@ app.get('/profile', (req, res)=>{
         fill.email = prof.email;
         if(prof.createdAt) fill.createdAt = prof.createdAt.getTime();
         else fill.createdAt = 0;
-        res.render('about', fill);
+        res.render('profile', fill);
     });
 });
 

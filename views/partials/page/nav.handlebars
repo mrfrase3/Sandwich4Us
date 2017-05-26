@@ -25,7 +25,7 @@
                     <a class="pure-menu-link capname" href="/profile" id="menuLink1">Hi, {{user.firstname}}</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item {{#if isPageProfile}}pure-menu-selected{{/if}}">
-                            <a class="pure-menu-link" href="/profile"><i class="material-icons">account_circle</i> Profile</a>
+                            <a class="pure-menu-link" href="/profile?user={{user.id}}"><i class="material-icons">account_circle</i> Profile</a>
                         </li>
                         <li class="pure-menu-item"><a class="pure-menu-link" href="/logout"><i class="material-icons">exit_to_app</i> Logout</a></li>
                     </ul>
