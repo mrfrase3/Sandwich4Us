@@ -5,18 +5,32 @@
     <div class="tile-body">
         <div class="match-req-info">
             <h3>Request Info</h3>
-            <p>
-                Location: <span class="get-loc-name" data-lat="{{req.loc.[1]}}" data-long="{{req.loc.[0]}}"></span><br>
-                Number of Sandwiches: {{req.num_sandwiches}}<br>
-                Distance: {{req.dist}} km<br>
-                Expires <span class="get-time-left" data-time="{{req.expires}}"></span><br>
-                You Have: {{#each req.have}}<span class="want-have-list">{{this}}</span>{{/each}}<br>
-                You Want: {{#each req.want}}<span class="want-have-list">{{this}}</span>{{/each}}
-            </p>
             <div class="right-opts">
                 <a href="/request" class="pure-button">Change Request</a>
                 <button type="button" class="pure-button cancel">Cancel Request</button>
             </div>
+            <p>
+                Location: <span class="get-loc-name" data-lat="{{req.loc.[1]}}" data-long="{{req.loc.[0]}}"></span><br>
+                Number of Sandwiches: {{req.num_sandwiches}}<br>
+                Distance: {{req.dist}} km<br>
+                Expires <span class="get-time-left" data-time="{{req.expires_safe}}"></span><br>
+                You Have: 
+                <span>
+                    {{#each req.have}}
+                        <span class="want-have-list">
+                            {{this}}
+                        </span>
+                    {{/each}}
+                </span><br>
+                You Want: 
+                <span>
+                    {{#each req.want}}
+                        <span class="want-have-list">
+                            {{this}}
+                        </span>
+                    {{/each}}
+                </span>
+            </p>
         </div>
         <br>
         <div id="req_getLocMap" data-lat="{{req.loc.[1]}}" data-long="{{req.loc.[0]}}"></div>
@@ -26,18 +40,32 @@
         <script id="match-template" type="text/x-handlebars-template">
             \{{#each this}}
                 <li>
+                    <h3 class="capname">\{{label}} - \{{firstname}}</h3>
                     <div class="right-opts">
                         <button class="pure-button">Message</button>
                         <span class="star-score" data-score="\{{score}}"></span>
                     </div>
-                    <h3 class="capname">\{{label}} - \{{firstname}}</h3>
                     <p>
                         Location: <span class="get-loc-name" data-lat="\{{loc.[1]}}" data-long="\{{loc.[0]}}"></span><br>
                         Number of Sandwiches: \{{num_sandwiches}}<br>
                         Distance: \{{distance}} km<br>
                         Expires <span class="get-time-left" data-time="\{{expires}}"></span><br>
-                        They Have: \{{#each have}}<span class="want-have-list">\{{this}}</span>\{{/each}}<br>
-                        They Want: \{{#each want}}<span class="want-have-list">\{{this}}</span>\{{/each}}
+                        They Have: 
+                        <span>
+                            \{{#each have}}
+                                <span class="want-have-list">
+                                    \{{this}}
+                                </span>
+                            \{{/each}}
+                        </span><br>
+                        They Want: 
+                        <span>
+                            \{{#each want}}
+                                <span class="want-have-list">
+                                    \{{this}}
+                                </span>
+                            \{{/each}}
+                        </span>
                     </p>
                 </li>
             \{{else}}

@@ -14,14 +14,18 @@ div#req_getLocMap {
     position: relative;
 }
 
+.match-req-info {
+    position: relative;
+}
+
 .right-opts{
-    position: absolute;
-    top: 0.5em;
-    right: 0;
+    float: right;
+    padding-top: 0.5em;
 }
 
 .right-opts .pure-button{
     margin-right: 1em;
+    margin-top: 0.5em;
 }
 
 .right-opts .star-score i{
