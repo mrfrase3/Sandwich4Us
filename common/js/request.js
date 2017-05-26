@@ -3,12 +3,10 @@
 {
 
     let dp_soon = moment(Number($('.c-datepicker-input').val()));
-    console.log(dp_soon);
-    if(!dp_soon._isValid) dp_soon = moment().add(2, 'h').minute(0);
+    if(!dp_soon._isValid || dp_soon.valueOf() == 0) dp_soon = moment().add(2, 'h').minute(0);
     $('.c-datepicker-input').val( dp_soon.format('HH:mm YYYY/MM/DD') );
     
     const picker = new MaterialDatetimePicker({defualt: dp_soon, min: moment()}).on('submit', value => {
-        console.log(value);
         if(value.valueOf() < Date.now()) value = moment().add(2, 'h').minute(0);
         $('.c-datepicker-input').val( value.format('HH:mm YYYY/MM/DD') );
     });
