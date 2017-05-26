@@ -63,7 +63,7 @@ var get_matches;
             if(score > 0.75) stars[3] = 'star';
             if(score > 0.85) stars[4] = 'star half';
             if(score >= 0.95) stars[4] = 'star';
-            $(this).text(
+            $(this).html(
                 '<i class="material-icons">'+
                 stars.join('</i><i class="material-icons">')+
                 '</i>'    
