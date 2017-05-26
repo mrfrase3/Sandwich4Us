@@ -94,6 +94,7 @@ app.get('/', (req, res, next)=>{
         if(!match_req) return next();
         fill.isPageMatches = true;
         fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
+        fill.req = match_req;
         res.render('matches', fill);
     });
 });

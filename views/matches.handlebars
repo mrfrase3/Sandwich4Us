@@ -3,6 +3,33 @@
         <h2>Find A Sandwich Buddy!</h2>
     </div>
     <div class="tile-body">
-        -- insert matches here --
+        <div class="match-req-info">
+            <h3>Request Info</h3>
+            <p>
+                Location: <span class="get-loc-name" data-lat="{{req.loc.1}}" data-long="{{req.loc.0}}"></span><br>
+                Number of Sandwiches: {{req.num_sandwiches}}<br>
+                Distance: {{req.dist}} km<br>
+                Time Left: <span class="get-time-left" data-time="req.expires"></span>
+            </p>
+            <a href="/request" class="pure-button">Change Request</a>
+        </div>
+        <div id="req_getLocMap" data-lat="{{req.loc.1}}" data-long="{{req.loc.0}}"></div>
+        <ul class="match-list">
+            
+        </ul>
+        <script id="match-template" type="text/x-handlebars-template">
+            \{{#each this}}
+            <li>
+                <h3>\{{name}}</h3>
+                <p>
+                    Location: <span class="get-loc-name" data-lat="\{{loc.1}}" data-long="\{{loc.0}}"></span><br>
+                    Number of Sandwiches: \{{num_sandwiches}}<br>
+                    Distance: \{{distance}} km<br>
+                    Score: \{{score}} km<br>
+                    Time Left: <span class="get-time-left" data-time="\{{expires}}"></span>
+                </p>
+            </li>
+            \{{each}}
+        </script>
     </div>
 </section>

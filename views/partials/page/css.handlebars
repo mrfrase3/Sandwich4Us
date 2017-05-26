@@ -9,11 +9,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/menus-dropdown-min.css" integrity="sha256-gWuGQzHuAlWT/71DLDgzEvwK4iI7S8vpDeqqZtRCblo=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.min.css" integrity="sha256-zgaKkhKpXzSrPyXVfczHhygcPSHyhHD+PSWnq3LZHHs=" crossorigin="anonymous" />
 
-{{#if isPageRequest}}
-    <link rel="stylesheet" href="common/css/material-datetime-picker.css">
-    <link href="./common/css/request.css" rel="stylesheet">
-{{/if}}
-
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/grids-responsive-old-ie-min.css" integrity="sha256-R5F1SmOl09rUHpwJNUQrAszyYFjrSYxPfggT2r7wdQk=" crossorigin="anonymous" />
 <![endif]-->
@@ -22,6 +17,14 @@
 <!--<![endif]-->
 
 <!-- Cutom Styles -->
-<link href="./common/css/theme.css" rel="stylesheet">
-<link href="./common/css/main.css" rel="stylesheet">
+<link href="/common/css/theme.css" rel="stylesheet">
+<link href="/common/css/main.css" rel="stylesheet">
 <!--<link href="./common/css/{{@exphbs.view}}.css" rel="stylesheet">-->
+
+{{#if isPageRequest}}
+    <link rel="stylesheet" href="common/css/material-datetime-picker.css">
+    <link href="/common/css/request.css" rel="stylesheet">
+{{/if}}
+{{#if isPageMatches}}
+    <link href="/common/css/matches.css" rel="stylesheet">
+{{/if}}
