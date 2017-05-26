@@ -65,7 +65,7 @@ var get_matches;
             if(score >= 0.95) stars[4] = 'star';
             $(this).text(
                 '<i class="material-icons">'+
-                starts.join('</i><i class="material-icons">')+
+                stars.join('</i><i class="material-icons">')+
                 '</i>'    
             );
         });
