@@ -222,7 +222,7 @@ app.post('/login', (req, res)=>{
             firstname: user.firstname,
             lastname: user.lastname,
             email: user.email,
-            id: user.id
+            id: user.id.toString("hex")
         };
         return res.redirect(301, '/');
     }).catch(errs=>{

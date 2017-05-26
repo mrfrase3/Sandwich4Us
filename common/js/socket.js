@@ -9,6 +9,7 @@ var socket = io('/');
                 else swal('Error', data.err[0], 'error');
                 return;
             }
+            console.log(data);
             socket.emit('sockauth.useToken', data);
         }, 'json').fail(()=>swal('Error', 'Failed querying backend, please try refreshing', 'error'));
     });
