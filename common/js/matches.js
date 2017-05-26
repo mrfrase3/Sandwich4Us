@@ -3,7 +3,7 @@ var get_matches;
 
 {
     let counter = 0;
-    var old_matches;
+    var old_matches = [];
     var geocoder;
     var map;
     var markers = [];
@@ -29,8 +29,34 @@ var get_matches;
     socket.on('sockauth.success', get_matches);
     
     socket.on('matches.list', matches => {
-        // add labels
-        for(let i in matches) matches[i].label = (Number(i)+10).toString(36).toUpperCase();
+        // add labels and check to see if anything has changed
+        let changed = false;
+        for(let i in matches){
+            matches[i].label = (Number(i)+10).toString(36).toUpperCase();
+            if(changed) continue;
+            let same = false;
+            for(let j in old_matches){
+                if(matches[i].id === old_matches[j].id && 
+                matches[i].updatedAt == old_matches[j].updatedAt){
+                    same = true;
+                    break;
+                }
+            }
+            if(!same) changed = true;
+        }
+        for(let j in old_matches){
+            if(changed) continue;
+            let same = false;
+            for(let i in matches){
+                if(matches[i].id === old_matches[j].id && 
+                matches[i].updatedAt == old_matches[j].updatedAt){
+                    same = true;
+                    break;
+                }
+            }
+            if(!same) changed = true;
+        }
+        if(!changed) return;
         // set the html list
         $(".match-list li").remove();
         $(".match-list").html(match_template(matches));
