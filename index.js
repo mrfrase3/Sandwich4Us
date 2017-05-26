@@ -95,7 +95,7 @@ app.get('/', (req, res, next)=>{
         fill.isPageMatches = true;
         fill.GoogleMapsAPIKey = config.other.GoogleMapsAPIKey;
         fill.req = match_req;
-        fill.req.expires_safe = fill.req.expires.getTime();
+        fill.req.expires_safe = fill.req.expires.valueOf();
         res.render('matches', fill);
     });
 });
