@@ -19,16 +19,21 @@
         </ul>
         <script id="match-template" type="text/x-handlebars-template">
             \{{#each this}}
-            <li>
-                <h3>\{{name}}</h3>
-                <p>
-                    Location: <span class="get-loc-name" data-lat="\{{loc.[1]}}" data-long="\{{loc.[0]}}"></span><br>
-                    Number of Sandwiches: \{{num_sandwiches}}<br>
-                    Distance: \{{distance}} km<br>
-                    Score: \{{score}} km<br>
-                    Time Left: <span class="get-time-left" data-time="\{{expires}}"></span>
-                </p>
-            </li>
+                <li>
+                    <h3>\{{name}}</h3>
+                    <p>
+                        Location: <span class="get-loc-name" data-lat="\{{loc.[1]}}" data-long="\{{loc.[0]}}"></span><br>
+                        Number of Sandwiches: \{{num_sandwiches}}<br>
+                        Distance: \{{distance}} km<br>
+                        Score: \{{score}} km<br>
+                        Time Left: <span class="get-time-left" data-time="\{{expires}}"></span>
+                    </p>
+                </li>
+            \{{else}}
+                <li class="warning">
+                    <h3>No Matches. Yet!</h3>
+                    <p>New matches will appear here automatically!</p>
+                </li>
             \{{/each}}
         </script>
     </div>
