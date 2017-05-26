@@ -29,8 +29,9 @@ if(config.server.https.enabled){
         redirectServer = require('http').createServer( function(req, res){
             let report = ':' + (config.server.https.port || 3001);
             if(report == ':443') report = '';
+            let host = (req.headers.host || config.server.https.host).split(':')[0];
             res.writeHead(302,
-                {Location: 'https://'+req.headers.host.split(':')[0]+report+req.url}
+                {Location: 'https://'+host+report+req.url}
             );
             res.end();
         });
@@ -127,6 +128,7 @@ app.get('/request', (req, res, next)=>{
 
 app.post('/request', (req, res, next)=>{
     if(!req.session.user) return res.redirect(301, '/');
+    var errored = false;
     Matcher.newRequest(
         req.session.user.id,
         req.session.user.firstname,
@@ -138,9 +140,10 @@ app.post('/request', (req, res, next)=>{
         req.body.req_want,
         req.body.req_have
     ).catch(err => {
+        errored = true;
         send_req_page(req, res, {user: req.session.user, formMessages: err});
     }).then(match_req => {
-        res.redirect(301, '/');
+        if(!errored) res.redirect(301, '/');
     });
 });
 

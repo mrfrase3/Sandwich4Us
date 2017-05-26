@@ -10,7 +10,8 @@ Quite easy!
  1. Download the repo to your test directory
  2. Run `npm install`
  3. Place your SSL certificate files into the certs folder, naming them server.key and server.crt . Alternatively make self signed certificates by running `sudo bash ./sscerts.sh <domain>` where you replace `<domain>` with the domain of your server. If you are running on a local machine, you can just use `sudo bash ./sscerts.sh localhost`. If using this method, ensure openssl is installed on your system.
- 4. Run `npm start`
+ 4. edit the `config.json` file to suit your setup. Change the mongodb details if you dont want to use the test one. (stability no way guaranteed)
+ 5. Run `npm start`
 
 # Configuration
 
