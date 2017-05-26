@@ -8,8 +8,23 @@
         <p>Feeling hungry? Want a sandwich? Only got half the ingredients? Just simply enter your details into the form along with what ingredients you have and what you want. Our service will then match you to someone close by that has the best match for ingredinent requirements.</p>
         <p>Once matched with someone, you'll then be able to communicate with your new sandwich buddy using our integrated chat to arrange a meetup with them to make the sandwich of both of your dreams.</p>
         <h2>Theme</h2>
-        <p>For some unknown reason all the existing, well established frameworks on the internet has disapeared... No worries! We created our own!</p>
-        <p>The sandwich theme is a basic approach to responsive design incorperating material-inspired flat, one page design. The theme consists of a navigation bar at the top, content tiles and a footer (because footers are still relevant *cough*). Only one content tile is shown at a time, and their display is toggled using links or the navigation bar.</p>
+        <p>The theme used is custom, built around the Purecss framework</p>
+        <p>The sandwich theme is a basic approach to responsive design incorperating material-inspired flat, one page design. The theme consists of a navigation bar at the top, content tiles and a footer (because footers are still relevant *cough*).</p>
+        <h2>Matching Algorithm</h2>
+        <p>The matching algorithm used is farely straight forward. It is based on the distance between two people relative to their max desired distance and the amount of ingredients the other person has relative to how many ingredients you want.</p>
+        <p>say:<br>p1 = % of ingredients that person2 has that person1 wants<br>p2 = % of ingredients that person1 has that person2 wants<br>d = distance between them<br>md1 = the max desired distance of person1<br>md2 = the max desired distance of person2</p>
+        <p>nd1 = d/md1 = normalised distance for person 1<br>nd2 = d/md2 = normalised distance for person 2</p>
+        <p>Therefore:<br>score1 = 1 - (nd1 x (1 - p1)) = the score for person1 (selfish)<br>score2 = 1 - (nd2 x (1 - p2)) = the score for person2 (selfish)<br>And Thus:<br>scoreT = (score1 + score2)/2 = the total non-selfish score</p>
+        <h2>Design choices</h2>
+        <p>For the backend, I use nodejs with express + handlebars as the web framework/renderer, Mongoose/Mongodb as the database and socket.io for socket connections. I've used most of these technologies before so it made sense to use them for this project.</p>
+        <p>For the front end, I used JQuery because I find it a lot more straight forward then most other front end frameworks.</p>
+        <h2>Testing and Validation</h2>
+        <p>I used mocha and Travis CI for my unit and integration testing, and then manual acceptance testing, I wish I had more time to fully write out the tests and formalise the process, but the system I did have did help me pick up a few bugs early</p>
+        <h2>Challenges</h2>
+        <p>Time was a large factor, I ran short and was not able to implement a messaging system and other features I wished to add. I am too much of a perfectionist and probably spent way too much time on styling.</p>
+        <p>I also had the steep learning curve of Mongoose which slowed me down in development, but I am glad I did it as it is a very useful framework which I will use in the future.</p>
+        <p>Google maps was actually surprisingly easy to implement.</p>
+        <p>Overall I managed to achieve a clean application that I am happy with, and learned a few things along the way.</p>
         <h2>License</h2>
         <p>This Website and it's resources are under <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
     </div>
